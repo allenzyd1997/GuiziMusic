@@ -16,7 +16,7 @@
     		<div class="tag_list">
     			<div id="tags" class="tags">
     				<h3 class="tag_tit"></h3>
-	    			<a href="javascript:;" class="current_tag">推荐</a>
+	    			<a href="javascript:;" class="current_tag" @click="test_func()">推荐</a>
 	    			<a href="javascript:;" class="other_tag">内地</a>
 	    			<a href="javascript:;" class="other_tag">港台</a>
 	    			<a href="javascript:;" class="other_tag">欧美</a>
@@ -38,7 +38,7 @@
 
     		<div class="albums">
     			<div class="album_head">
-    				<h2 class="album_head_tit">推荐</h2>
+    				<h2 id="current_head" class="album_head_tit">推荐</h2>
     			</div>
 
     			<div class="album_content">
@@ -135,8 +135,8 @@
 					</ul>
                 </div>
     			
-    			<div class="album_foot">
-    				<strong class="current_foot">1</strong>
+    			<div id="album_foot" class="album_foot">
+    				<a href="javascript:;" class="current_foot">1</a>
     				<a href="javascript:;" class="other_foot">2</a>
     				<a href="javascript:;" class="other_foot">3</a>
     				<a href="javascript:;" class="other_foot">4</a>
@@ -151,36 +151,14 @@
     </div>
 </template>
 
-<script type="text/javascript">
-    // JS实现选项卡切换
-    window.onload = function() {
-        var tabList = document.getElementById("tags");
-        var aLis = tabList.getElementsByTagName("a");
-        //	var tDiv = document.getElementById("tDiv");
-        //	var contents = tDiv.getElementsByTagName("div");
-
-        for(var i = 0; i < aLis.length; i++) {
-            aLis[i].index = i;
-            aLis[i].onclick = function() {
-                for(var j = 0; j < aLis.length; j++) {
-                    aLis[j].className = '';
-                }
-                this.className = "tab-active";
-
-                for(var j = 0; j < contents.length; j++) {
-                    contents[j].className = "tab-content tab-content-hide";
-                }
-                contents[this.index].className = "tab-content tab-content-show";
-            };
-        }
-    };
-
-</script>
-
-
 <script type="text/ecmascript-6">
-
-
+	export default {
+        methods: {
+            test_func() {
+               alert("hello Wrold");
+            }
+        }
+	}
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
