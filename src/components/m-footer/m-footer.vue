@@ -10,6 +10,7 @@
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
 .m-footer
+    margin-top:20px
     color: #999
     background-color: #333
     clear: both

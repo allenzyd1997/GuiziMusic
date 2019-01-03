@@ -1,6 +1,5 @@
 <template>
     <div class="album">
-<<<<<<< Hhttps://github.com/allenzyd1997/GuiziMusic.gi://github.com/allenzyd1997/GuiziMusic.gitEAD
         <div class="tag">
             <div class="tag_list">
             </div>
@@ -13,10 +12,9 @@
             <div class="tag_list"></div>
             <div class="tag_list"></div>
         </div>
-=======
     	<div class="album_block">
     		<div class="tag_list">
-    			<div class="tags">
+    			<div id="tags" class="tags">
     				<h3 class="tag_tit"></h3>
 	    			<a href="javascript:;" class="current_tag">推荐</a>
 	    			<a href="javascript:;" class="other_tag">内地</a>
@@ -25,7 +23,16 @@
 	    			<a href="javascript:;" class="other_tag">韩国</a>
 	    			<a href="javascript:;" class="other_tag">日本</a>
 	    			<a href="javascript:;" class="other_tag">其他</a>
-    			</div>	
+    			</div>
+
+    			<div>
+    				<div id="genre" class="genre">
+    					
+    				</div>
+    				<div id="classes" class="classes">
+    					
+    				</div>
+    			</div>
     		</div>
     		
 
@@ -141,10 +148,34 @@
     			</div>
     		</div>
     	</div>
->>>>>>> 538aed1ad4bc7b8363eaa618ecefc9993af69aff
     </div>
 </template>
 
+<script type="text/javascript">
+    // JS实现选项卡切换
+    window.onload = function() {
+        var tabList = document.getElementById("tags");
+        var aLis = tabList.getElementsByTagName("a");
+        //	var tDiv = document.getElementById("tDiv");
+        //	var contents = tDiv.getElementsByTagName("div");
+
+        for(var i = 0; i < aLis.length; i++) {
+            aLis[i].index = i;
+            aLis[i].onclick = function() {
+                for(var j = 0; j < aLis.length; j++) {
+                    aLis[j].className = '';
+                }
+                this.className = "tab-active";
+
+                for(var j = 0; j < contents.length; j++) {
+                    contents[j].className = "tab-content tab-content-hide";
+                }
+                contents[this.index].className = "tab-content tab-content-show";
+            };
+        }
+    };
+
+</script>
 
 
 <script type="text/ecmascript-6">
@@ -157,6 +188,7 @@ a{text-decoration:none}
 
 .album
 	padding-left:0px
+	margin-top:-100px
 .album_block
 	background: linear-gradient(to bottom, #FFF0F0, #FFFFFF);
 .tag_list
@@ -268,8 +300,9 @@ a{text-decoration:none}
 
 
 .album_foot
-
+	margin-top:20px
 	.current_foot
+
 		background: #FFA5A5
 		color: #FFFFFF
 		padding-left:20px
@@ -277,6 +310,7 @@ a{text-decoration:none}
 		padding-top:15px
 		padding-bottom:15px
 	.other_foot
+
 		color: #000000
 		padding-top:15px
 		padding-bottom:15px
