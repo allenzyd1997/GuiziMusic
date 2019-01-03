@@ -39,5 +39,5 @@
                 color: #000
             &.router-link-active
                 .tab-link   
-                    color: #31c27c
+                    color: #FFA5A5
 </style>

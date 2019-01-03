@@ -1,14 +1,16 @@
 <template>
+
     <div class="m-header">
+        <div><hr class="line"></div>
         <h1 class="icon">
             <a href="" >
-                <img src="" alt="桂子音乐">
+                <img src="../../common/image/logo.png" alt="桂子音乐" class="icon_img">
             </a>
         </h1>
         <div class="tab">
             <ul>
-                <li class="nav_item"><router-link class="nav_item_link" to="/">音乐馆</router-link></li>
-                <li class="nav_item"><router-link class="nav_item_link" to="/profile">我的音乐</router-link></li>  
+                <li class="nav_item"><router-link class="nav_item_link" to="/"><div class="current_block">音乐馆</div></router-link></li>
+                <li class="nav_item"><router-link class="nav_item_link" to="/profile"><div class="other_block">我的音乐</div></router-link></li>  
             </ul>            
         </div>
 
@@ -69,13 +71,22 @@ import Register from '@/base/register/register'
     .m-header
         display: flex
         align-items: center
-        background-color: #fff
+        background-color: #FFFFFF
+        padding-left:50px
+        margin-bottom:-40px
+        .line
+            margin-top: -60px
+        .icon
+            .icon_img
+                width:120px
+                height:115px
         .tab
             display: flex
+
             .nav_item
                 flex: 1
-                background: #31c27c
-                width: 94px
+                
+                width: 200px
                 height: 90px
                 float: left 
                 text-align: center
@@ -86,6 +97,14 @@ import Register from '@/base/register/register'
                     height: 90px
                     font-size: 18px
                     text-decoration: none
+                    
+                    .current_block
+                        color: #FFFFFF
+                        background: #FFA5A5
+                    .other_block
+                        color: #000000
+                    .other_block:hover
+                        color: #FFA5A5
         .search
             position: relative
             left: 100px
