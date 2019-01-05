@@ -16,21 +16,33 @@
     		<div class="tag_list">
     			<div id="tags" class="tags">
     				<h3 class="tag_tit"></h3>
-	    			<a href="javascript:;" class="current_tag">推荐</a>
-	    			<a href="javascript:;" class="other_tag">内地</a>
-	    			<a href="javascript:;" class="other_tag">港台</a>
-	    			<a href="javascript:;" class="other_tag">欧美</a>
-	    			<a href="javascript:;" class="other_tag">韩国</a>
-	    			<a href="javascript:;" class="other_tag">日本</a>
-	    			<a href="javascript:;" class="other_tag">其他</a>
+	    			<a href="javascript:;" class="current_tag" @click="test_func()">推荐</a>
+	    			<a href="javascript:;" class="other_tag"  @click="test_func()">内地</a>
+	    			<a href="javascript:;" class="other_tag"  @click="test_func()">港台</a>
+	    			<a href="javascript:;" class="other_tag"  @click="test_func()">欧美</a>
+	    			<a href="javascript:;" class="other_tag"  @click="test_func()">韩国</a>
+	    			<a href="javascript:;" class="other_tag"  @click="test_func()">日本</a>
+	    			<a href="javascript:;" class="other_tag"  @click="test_func()">其他</a>
     			</div>
 
     			<div>
     				<div id="genre" class="genre">
-    					
+		    			<a href="javascript:;" class="current_tag" @click="test_func()">全部</a>
+		    			<a href="javascript:;" class="other_tag"  @click="test_func()">流行</a>
+		    			<a href="javascript:;" class="other_tag"  @click="test_func()">古典</a>
+		    			<a href="javascript:;" class="other_tag"  @click="test_func()">乡村</a>
+		    			<a href="javascript:;" class="other_tag"  @click="test_func()">R&B</a>
+		    			<a href="javascript:;" class="other_tag"  @click="test_func()">金属</a>
+		    			<a href="javascript:;" class="other_tag"  @click="test_func()">拉丁</a>    					
     				</div>
-    				<div id="classes" class="classes">
-    					
+	    				<div id="classes" class="classes">
+		    			<a href="javascript:;" class="current_tag" @click="test_func()">全部</a>
+		    			<a href="javascript:;" class="other_tag"  @click="test_func()">专辑</a>
+		    			<a href="javascript:;" class="other_tag"  @click="test_func()">EP</a>
+		    			<a href="javascript:;" class="other_tag"  @click="test_func()">Single</a>
+		    			<a href="javascript:;" class="other_tag"  @click="test_func()">演唱会</a>
+		    			<a href="javascript:;" class="other_tag"  @click="test_func()">动漫</a>
+		    			<a href="javascript:;" class="other_tag"  @click="test_func()">游戏</a>    					
     				</div>
     			</div>
     		</div>
@@ -38,7 +50,7 @@
 
     		<div class="albums">
     			<div class="album_head">
-    				<h2 class="album_head_tit">推荐</h2>
+    				<h2 id="current_head" class="album_head_tit">推荐</h2>
     			</div>
 
     			<div class="album_content">
@@ -135,15 +147,15 @@
 					</ul>
                 </div>
     			
-    			<div class="album_foot">
-    				<strong class="current_foot">1</strong>
+    			<div id="album_foot" class="album_foot">
+    				<a href="javascript:;" class="current_foot">1</a>
     				<a href="javascript:;" class="other_foot">2</a>
     				<a href="javascript:;" class="other_foot">3</a>
     				<a href="javascript:;" class="other_foot">4</a>
     				<a href="javascript:;" class="other_foot">5</a>
     				<a href="javascript:;" class="other_foot">6</a>
     				<a href="" class="other_foot">
-    					<span>></span>
+    				<span>></span>
     				</a>
     			</div>
     		</div>
@@ -151,37 +163,12 @@
     </div>
 </template>
 
-<script type="text/javascript">
-    // JS实现选项卡切换
-    window.onload = function() {
-        var tabList = document.getElementById("tags");
-        var aLis = tabList.getElementsByTagName("a");
-        //	var tDiv = document.getElementById("tDiv");
-        //	var contents = tDiv.getElementsByTagName("div");
-
-        for(var i = 0; i < aLis.length; i++) {
-            aLis[i].index = i;
-            aLis[i].onclick = function() {
-                for(var j = 0; j < aLis.length; j++) {
-                    aLis[j].className = '';
-                }
-                this.className = "tab-active";
-
-                for(var j = 0; j < contents.length; j++) {
-                    contents[j].className = "tab-content tab-content-hide";
-                }
-                contents[this.index].className = "tab-content tab-content-show";
-            };
-        }
-    };
-
-</script>
 
 
 <script type="text/ecmascript-6">
 
-
 </script>
+
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
 a{text-decoration:none}
@@ -195,26 +182,25 @@ a{text-decoration:none}
 	padding-top:20px
 	right:0px
 	width:800px
-	.tags
-		
-		font-style: normal
-		font-size: 1em
+	font-style: normal
+	font-size: 1em
+	text-align: left
+	margin-left: 100px
+	.current_tag
+		text-decoration:none
+		background: #FFA5A5
+		color: #FFFFFF
+		padding-left:10px
+		padding-right:10px
+		margin-left:20px
 
-		.current_tag
-			text-decoration:none
-			background: #FFA5A5
-			color: #FFFFFF
-			padding-left:10px
-			padding-right:10px
-			margin-left:20px
-
-		.other_tag
-			text-decoration:none
-			color: #9E0047
-			margin-left:20px
-			margin-right:20px
-		.other_tag:hover
-			color: #FFA5A5
+	.other_tag
+		text-decoration:none
+		color: #9E0047
+		margin-left:20px
+		margin-right:20px
+	.other_tag:hover
+		color: #FFA5A5
 
 
 
