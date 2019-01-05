@@ -7,7 +7,6 @@ import Singer from '@/components/singer/singer'
 import Album from '@/components/album/album'
 import Playlist from '@/components/playlist/playlist'
 import Login from '@/base/login/login'
-import Register from '@/base/register/register'
 import store from '../store'
 
 import SingerDetail from '@/components/singer-detail/singer-detail'
@@ -52,6 +51,10 @@ const router = new Router({
       component: Playlist
     },
     {
+      path: '/login',
+      component: Login
+    },
+    {
       path: '/singer-detail',
       component: SingerDetail
     },
@@ -62,5 +65,24 @@ const router = new Router({
  * 路由守卫
  */
 
+router.beforeEach((to, from, next) => {
+
+  let token = store.state.token
+  // 判断路由是否需要权限
+  if (to.meta.requiresAuth) {
+    if (token) {
+      next()
+    } else {
+      next({
+        path: '/login',
+        query: {
+          redirect: to.fullPath // 将刚刚要去的路由path作为参数，方便登录成功后直接跳转到该路由
+        }
+      })
+    }
+  } else {
+    next()
+  }
+})
 
 export default router

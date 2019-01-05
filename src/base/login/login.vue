@@ -1,39 +1,13 @@
-<!--<template>
-    <p class="login">
-            <el-tabs v-model="activeName" @tab-click="handleClick">
-                <el-tab-pane label="登陆" name="first">
-                    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-                        <el-form-item label="名称" prop="name">
-                            <el-input v-model="ruleForm.name"></el-input>
-                        </el-form-item>
-                        <el-form-item label="密码" prop="pass">
-                            <el-input type="password" v-model="ruleForm.pass" auto-complete="off"></el-input>
-                        </el-form-item>
-                        <el-form-item>
-                            <el-button type="primary" @click="submitForm('ruleForm')">登陆</el-button>
-                            <el-button @click="resetForm('ruleForm')">重置</el-button>
-                        </el-form-item>
-                    </el-form>
-                </el-tab-pane>
-                <el-tab-pane>
-                    <el-tab-pane label="注册" name="second">
-                        <register></register>
-                    </el-tab-pane>
-                </el-tab-pane>
-            </el-tabs>
-    </p>
-</template>-->
-
 <template>
     <div class="login">
-        <el-form :model="User" :rules="Rules" ref="User" >
+        <el-form :model="User" :rules="loginRules" ref="User" >
 
-        <el-form-item label="账号" prop="name" >
-        <el-input v-model="User.name" ></el-input>
+        <el-form-item label="账号" prop="username" >
+        <el-input v-model="User.username" ></el-input>
         </el-form-item>
 
-        <el-form-item label="密码" prop="pass" >
-        <el-input type="password" v-model="User.pass" auto-complete="new-password"></el-input>
+        <el-form-item label="密码" prop="password" >
+        <el-input type="password" v-model="User.password" auto-complete="new-password"></el-input>
         </el-form-item>
 
 
@@ -47,48 +21,63 @@
           </span>
         </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button >取 消</el-button>
-      <el-button type="primary" @click="submitForm()">登 录</el-button>
+      <el-button type="primary" @click.native.prevent="reset">重 置</el-button>
+      <el-button type="primary" @click.native.prevent="handleLogin" :loading=logining>登 录</el-button>
     </div>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
-
+import {requseLogin} from '@/axios/api'
 export default {
     data() {
         return {
             dialogFormVisible: false,
 
             User: {
-                name: '',
+                username: '',
                 password: '',
                 delivery: ''
             },
-            Rules: {
-
+            loginRules: {
+                username: [{required: true, message: '请输入账号', trigger: 'blur'}],
+                password: [{required: true, message: '请输入密码', trigger: 'blur'}]
             },
-          
+            checked: true,
+            logining: false
         }
     },
     methods: {
-        handleClick(tab, event) {
-
+        reset() {
+            this.$refs.User.resetFields()
         },
-        resetForm(formName) {
-            this.$refs[formName].resetFields()
-        },
-        submitForm(formName) {
-            this.$refs[formName].validate((valid) => {
+        handleLogin() {
+            this.$refs.User.validate((valid) => {
                 if (valid) {
-                    this.$message({
-                        type: 'success',
-                        message: '登陆成功'
+                    this.logining = true;
+                    let loginParams = {
+                        username: this.User.username,
+                        password: this.User.password
+                    }
+                    requseLogin(loginParams).then(res => {
+                        this.logining = false
+                        let { code, msg, user} = res.data
+                        if (code === 200) {
+                            this.$message({
+                                type: 'success',
+                                message: msg
+                            })
+                            sessionStorage.setItem('user', JSON.stringify(user))
+                            this.$router.push({path: '/'})
+                        } else {
+                            this.$message({
+                                type: 'error',
+                                message: msg
+                            })
+                        }
+                    }).catch(err => {
+                        console.log(err)
                     })
-                    this.$router.push('recommand')
-                } else {
-                    console.log('error submit')
-                    return false
                 }
             })
         },

@@ -1,89 +1,94 @@
 <template>
     <div class="register">
-    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-        <el-form-item label="名称" prop="name">
-            <el-input v-model="ruleForm.name"></el-input>
+        <el-form :model="newUser" :rules="loginRules" ref="User" >
+
+        <el-form-item label="账号" prop="username" >
+        <el-input v-model="newUser.username" ></el-input>
         </el-form-item>
-        <el-form-item label="密码" prop="pass">
-            <el-input v-model="ruleForm.pass" auto-complete="off"></el-input>
+
+        <el-form-item label="密码" prop="password" >
+        <el-input type="password" v-model="newUser.password" auto-complete="new-password"></el-input>
         </el-form-item>
-        <el-form-item label="确认密码" prop="checkPass">
-            <el-input v-model="ruleForm.checkPass" auto-complete="off"></el-input>
+
+        <el-form-item label="确认密码" prop="checkPass" >
+        <el-input type="password" v-model="newUser.checkPass" auto-complete="new-password"></el-input>
         </el-form-item>
-        <el-form-item>
-            <el-button type="primary" @click="submitForm('ruleForm')">注册</el-button>
-            <el-button @click="resetForm('ruleForm')">重置</el-button>
-        </el-form-item>
-    </el-form>
+
+        </el-form>
+    <div slot="footer" class="dialog-footer">
+      <el-button type="primary" @click.native.prevent="reset">重 置</el-button>
+      <el-button type="primary" @click.native.prevent="handleRegister" :loading=registering>注 册</el-button>
+    </div>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
-
+import {requseLogin} from '@/axios/api'
 export default {
     data() {
-        let validatePass = (rule, value, callback) => {
-            if (value === '') {
-                callback(new Error('请输入密码'));
-            } else {
-                if (this.ruleForm.checkPass !== '') {
-                    this.$refs.ruleForm.validateField('checkPass')
-                }
-                callback()
-            }
-        }
-        let validatePass2 = (rule, value, callback) => {
-            if (value === '') {
-                callback(new Error('请再输入密码'))
-            } else if (value !== this.ruleForm.pass) {
-                callback(new Error('两次输入密码不一致！'))
-            } else {
-                callback()
-            }
-        }
         return {
-            activeName: 'second',
-            ruleForm: {
-                name: '',
-                pass: '',
-                checkPass: '',
+            dialogFormVisible: false,
+
+            newUser: {
+                username: '',
+                password: '',
+                checkPass: ''
             },
-            rule: {
-                name: [
-                    {
-                        required: true, message: '请输入您的名称', trigger: 'blur'
-                    },
-                    {
-                        min: 2, max: 5, message: '长度在2到5个字符', trigger: 'blur'
-                    }
-                ], 
-                pass: [
-                    {
-                        required: true, validator: validatePass, trigger: 'blur'
-                    },
-                    {
-                        required: true, validator: validatePass2, trigger: 'blur'
-                    }
-                ]
-            }
+            loginRules: {
+                username: [{required: true, message: '请输入账号', trigger: 'blur'}],
+                password: [{required: true, message: '请输入密码', trigger: 'blur'}]
+            },
+            checked: true,
+            registering: false
         }
     },
     methods: {
-        submitForm(formName) {
-            this.$refs[formName].validate((valid) => {
+        reset() {
+            this.$refs.User.resetFields()
+        },
+        handleRegister() {
+            this.$refs.User.validate((valid) => {
                 if (valid) {
-                    this.$message({
-                        type: 'success',
-                        message: '注册成功'
+                    this.registering = true;
+                    let loginParams = {
+                        username: this.User.username,
+                        password: this.User.password
+                    }
+                    requseLogin(loginParams).then(res => {
+                        this.logining = false
+                        let { code, msg, user} = res.data
+                        if (code === 200) {
+                            this.$message({
+                                type: 'success',
+                                message: msg
+                            })
+                            sessionStorage.setItem('user', JSON.stringify(user))
+                            this.$router.push({path: '/'})
+                        } else {
+                            this.$message({
+                                type: 'error',
+                                message: msg
+                            })
+                        }
+                    }).catch(err => {
+                        console.log(err)
                     })
-                } else {
-                    console.log('error submit!!')
-                    return false
                 }
             })
         },
-        resetForm(formName) {
-            this.$ref[formName].resetFields()
+        register() {
+            this.$emit('showRegisterForm');
         }
-    }
+    },
 }
+</script>
+
+<style scoped lang="stylus" rel="stylesheet/stylus">
+    a
+        text-decoration: none
+        color: #000
+    .login
+        margin-top: -50px
+        .dialog-footer
+            margin-top: 20px
+</style>

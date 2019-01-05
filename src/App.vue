@@ -4,7 +4,7 @@
       <MHeader v-if="header_show"></MHeader>
       <Tab></Tab>
     </div>
-    <router-view></router-view>
+    <router-view v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view>
     <MFooter  v-if="footer_show"></MFooter>
   </div>
 </template>
@@ -28,6 +28,14 @@ export default {
     MFooter,
     Tab
   },
+  methods: {
+    public_header: function (bool) {
+      this.header_show = bool
+    },
+    public_footer: function (bool) {
+      this.footer_show = bool
+    } 
+  }
 }
 </script>
 

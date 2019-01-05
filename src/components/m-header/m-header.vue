@@ -38,16 +38,6 @@
 import Login from '@/base/login/login'
 import Register from '@/base/register/register'
     export default {
-        props: {
-                User: {
-                    name: '',
-                    password: '',
-                    delivery: ''
-                },
-                Rules: {
-
-                }
-        },
         data() {
             return {
                 loginVisible: false,
@@ -57,12 +47,12 @@ import Register from '@/base/register/register'
         methods: {
             showRegisterForm() {
                 loginVisible = false,
-                registerVisible = true
+                registerVisible = false
             }
         },
         components: {
-            Login,
-            Register
+            Register,
+            Login
         }
     }
 </script>
