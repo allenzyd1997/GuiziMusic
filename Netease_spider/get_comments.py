@@ -21,7 +21,36 @@ import codecs
 import base64
 import csv
 import pandas as pd
+import json
+import pymysql
+import tempfile
+import time
 
+# 代理服务器
+proxyHost = "b5.t.16yun.cn"
+proxyPort = "6460"
+
+# 代理隧道验证信息
+proxyUser = "16KKHDSD"
+proxyPass = "759940"
+
+proxyMeta = "http://%(user)s:%(pass)s@%(host)s:%(port)s" % {
+            "host" : proxyHost,
+            "port" : proxyPort,
+            "user" : proxyUser,
+            "pass" : proxyPass,
+}
+
+# 设置 http和https访问都是用HTTP代理
+proxies = {
+    "http"  : proxyMeta,
+    "https" : proxyMeta,
+}
+
+
+#  设置IP切换头
+tunnel = random.randint(1,10000)
+headers = {"Proxy-Tunnel": str(tunnel)}
 
 # 构造函数获取歌手信息
 def get_comments_json(url, data):
@@ -37,15 +66,19 @@ def get_comments_json(url, data):
                            'Chrome/66.0.3359.181 Safari/537.36'}
 
     try:
-        r = requests.post(url, headers=headers, data=data)
+        r = requests.post(url, proxies=proxies, headers=headers, data=data,timeout=5)
         r.encoding = "utf-8"
         if r.status_code == 200:
 
             # 返回json格式的数据
             return r.json()
+        else:
+            return 0
 
     except:
         print("爬取失败!")
+        return 0
+        
 
 
 # 生成16个随机字符
@@ -144,72 +177,63 @@ def hotcomments(html, songname, i, pages, total, filepath):
             m += 1
 
 
-'''def comments(html, songname, i, pages, total, filepath):
-    with open(filepath, 'a', encoding='utf-8') as f:
-        f.write("\n正在获取歌曲{}的第{}页评论,总共有{}页{}条评论！\n".format(songname, i, pages, total))
-    print("\n正在获取歌曲{}的第{}页评论,总共有{}页{}条评论！\n".format(songname, i, pages, total))
-    # 全部评论
-    j = 1
-    for item in html['comments']:
-        # 提取发表评论的用户名
-        user = item['user']
-        print("全部评论{}: {} : {}    点赞次数: {}".format(j, user['nickname'], item['content'], item['likedCount']))
-        with open(filepath, 'a', encoding='utf-8') as f:
-
-            f.write("全部评论{}: {} : {}   点赞次数: {}\n".format(j, user['nickname'], item['content'], item['likedCount']))
-            # 回复评论
-            if len(item['beReplied']) != 0:
-                for reply in item['beReplied']:
-                    # 提取发表回复评论的用户名
-                    replyuser = reply['user']
-                    print("回复：{} : {}".format(replyuser['nickname'], reply['content']))
-                    f.write("回复：{} : {}\n".format(replyuser['nickname'], reply['content']))
-
-        j += 1'''
-
-
 def main():
-
-    '''with open('artistid.csv','r') as csvfile:
-        reader = csv.reader(csvfile)
-        column1 = [row[0]for row in reader]
-        idlen=len(csv.readlines())'''
-    # 歌曲id号
-    songid = 38592976
-
-    # 歌曲名字
-    songname = "Dream it possible"
-    # 文件存储路径
-    filepath = songname + ".txt"
-    page = 1
-    params, encSecKey = get_params(page)
-
-    url = 'https://music.163.com/weapi/v1/resource/comments/R_SO_4_' + str(songid) + '?csrf_token='
-    data = {'params': params, 'encSecKey': encSecKey}
-    # url = 'https://music.163.com/#/song?id=19292984'
-    # 获取第一页评论
-    html = get_comments_json(url, data)
-    # 评论总数
-    total = html['total']
-    # 总页数
-    pages = math.ceil(total / 20)
-    hotcomments(html, songname, page, pages, total, filepath)
-    '''comments(html, songname, page, pages, total, filepath)
-
-    # 开始获取歌曲的全部评论
-    page = 2
-    while page <= pages:
-
+    conn = pymysql.connect(host='localhost', port=3306, user='root', passwd='root', db='gz_musicdb', charset='utf8')
+    cursor=conn.cursor()
+    sql="select song_id,song_name from songinfo"
+    df=pd.read_sql(sql=sql,con=conn)
+    for items in df.values:
+    # 歌曲id号 歌曲名字
+        songid = items[0]
+        songname=items[1]
+        # 文件存储路径
+        #filepath = songname + ".txt"
+        page = 1
         params, encSecKey = get_params(page)
+
+        url = 'https://music.163.com/weapi/v1/resource/comments/R_SO_4_' + str(songid) + '?csrf_token='
         data = {'params': params, 'encSecKey': encSecKey}
+        # url = 'https://music.163.com/#/song?id=19292984'
+        # 获取第一页评论
         html = get_comments_json(url, data)
-        # 从第二页开始获取评论
-        comments(html, songname, page, pages, total, filepath)
-        page += 1'''
-    with open('music_163_artists.csv','r') as csvfile:
-        reader = csv.reader(csvfile)
-        column1 = [row[1]for row in reader]
-        print(column1)
+        if html==0:
+            print("歌曲",songid," ",songname,"爬取失败")
+            continue
+        count=1
+        for i in html['hotComments']:
+            print("“",songname,"” ：第 ",count," 条热评","\n")
+            hcdata=html['hotComments'][count-1]
+            commentid=hcdata['commentId']
+            commenttime=hcdata['time']
+            content=hcdata['content']
+            userid=hcdata['user']['userId']
+            nickname=hcdata['user']['nickname']
+            avturl=hcdata['user']['avatarUrl']
+            parentCommentId=hcdata['parentCommentId']
+            print(commentid," / ",commenttime," / ",content," / ",userid," / ",nickname," / ",avturl)
+            try:
+                sql="insert into comment(comment_id,user_id,song_id,comment_content,comment_time,parentCommentId) values(%s,%s,%s,%s,%s,%s);"
+                cursor.execute(sql,[commentid,userid,songid,content,commenttime,parentCommentId])
+                conn.commit()
+            except:
+                print("评论存入失败，该评论已在数据库中")
+            try:
+                sql="insert into userinfo(user_id,user_nickname,avatar_url) values(%s,%s,%s);"
+                cursor.execute(sql,[userid,nickname,avturl])
+                conn.commit()
+            except:
+                print("用户存入失败，该用户已在数据库中","\n")
+                #time.sleep(2)
+            #print(hcdata)
+            '''with open ('comment.json','w',encoding='utf8') as f:
+                f.write(json.dumps(html,ensure_ascii=False,indent=2))
+                f.close()'''
+            # 评论总数
+            #total = html['total']
+            count = count+1
+            # 总页数
+            #pages = math.ceil(total / 20)
+            #hotcomments(html, songname, page, pages, total, filepath)
 
 
 if __name__ == "__main__":

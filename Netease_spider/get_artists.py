@@ -5,7 +5,7 @@ import csv
 
 
 # 构造函数获取歌手信息
-def get_artists(url):
+def get_artists(url,tag):
     headers={'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
              'Accept-Encoding': 'gzip, deflate',
              'Accept-Language': 'zh-CN,zh;q=0.9',
@@ -28,7 +28,7 @@ def get_artists(url):
         artist_name = artist.string
         artist_id = artist['href'].replace('/artist?id=', '').strip()
         try:
-            writer.writerow((artist_id, artist_name))
+            writer.writerow((artist_id, artist_name,tag))
         except Exception as msg:
             print(msg)
 
@@ -41,4 +41,4 @@ writer.writerow(('artist_id', 'artist_name'))
 for i in ls1:
     for j in ls2:
         url = 'http://music.163.com/discover/artist/cat?id=' + str(i) + '&initial=' + str(j)
-        get_artists(url)
+        get_artists(url,i)
