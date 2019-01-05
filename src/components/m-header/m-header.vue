@@ -33,7 +33,7 @@
         </el-dialog>       
     </div>
 </template>
-emit
+
 <script type="text/ecmascript-6">
 import Login from '@/base/login/login'
 import Register from '@/base/register/register'

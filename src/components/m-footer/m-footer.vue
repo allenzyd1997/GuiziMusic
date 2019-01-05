@@ -9,12 +9,13 @@
 </template>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
+
 .m-footer
     margin-top:20px
     color: #999
     background-color: #333
     clear: both
-    width: 100%
+    width: 100%     
     height: 200px
     .footer_copyright
         padding-top: 150px

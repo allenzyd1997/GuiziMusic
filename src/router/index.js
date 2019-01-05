@@ -8,6 +8,8 @@ import Album from '@/components/album/album'
 import Playlist from '@/components/playlist/playlist'
 import Login from '@/base/login/login'
 import store from '../store'
+import SingerDetail from '@/components/singer-detail/singer-detail'
+import IconMenu from '@/base/icon-menu/icon-menu'
 Vue.use(Router)
 
 const router = new Router({
@@ -43,7 +45,11 @@ const router = new Router({
     {
       path: '/login',
       component: Login
-    }
+    },
+    {
+      path: '/singer-detail',
+      component: SingerDetail
+    },
   ]
 })
 

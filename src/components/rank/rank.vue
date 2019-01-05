@@ -49,34 +49,29 @@
                     <h1 class="toplist_tit">巅峰榜流行指数</h1>
                 </div>
                 <div class="songlist_toolbar">
-                    <a href="" class="btn_play_green">
-                        <i class="btn_play_green"></i>播放全部
-                    </a>
-                    <a href="">
-                        <i class="btn_play"></i>添加
-                    </a>
-                    <a href="">
-                        <i class="btn_play"></i>下载
-                    </a>
-                    <a href="">
-                        <i class="btn_play"></i>批量操作
-                    </a>
-                    <a href="">
-                        <i class="btn_play"></i>评论
-                    </a>                                                                               
+                    <el-button icon="el-icon-search" class="green_btn">播放全部</el-button>
+                    <el-button icon="el-icon-search">添加</el-button>
+                    <el-button icon="el-icon-search">下载</el-button>
+                    <el-button icon="el-icon-search">批量操作</el-button>
+                    <el-button icon="el-icon-search">评论</el-button>                                                                            
                 </div>
                 <div class="songlist">
-                    <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%" selection-change="handleSelectionChange">
+                    <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%" selection-change="handleSelectionChange" :row-style="setRowStyle"
+                    @cell-mouse-enter="handleMouseEnter" @cell-mouse-leave="handleMouseOut">
+                       
                         <el-table-column type="selection" width="55">
-                            
                         </el-table-column>
-                        <el-table-column label="歌曲" width="120" prop="song">
-
+                        <el-table-column label="歌曲" width="200" prop="song">
                         </el-table-column> 
-                        <el-table-column label="歌手" width="120" prop="singer">
+                        <el-table-column width="600">
+                            <template scope="scope">
+                                <IconMenu></IconMenu>
+                            </template>                            
+                        </el-table-column>
+                        <el-table-column label="歌手" width="200" prop="singer">
 
                         </el-table-column>
-                        <el-table-column label="时长" width="120" prop="duration">
+                        <el-table-column label="时长" width="200" prop="duration">
 
                         </el-table-column>
                     </el-table> 
@@ -114,8 +109,11 @@
 </template>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
+    
+
     .main
         padding-top: 60px
+        margin: 0 50px
         .toplist_nav
             float: left 
             border-width: 1px
@@ -152,24 +150,15 @@
                     margin-right: 15px
             .songlist_toolbar
                 position: relative
+                float: left
                 margin-bottom: 20px
-                .btn_play_green
-                    border: 1px solid #31c27c
-                    background-color: #31c27c
-                    color: #fff
-                    border-radius: 2px
-                    font-size: 14px
-                    margin-right: 6px
-                    padding: 0 23px
-                    height: 38px
-                    line-height: 38px
-                    display: inline-block
-                    white-space: nowrap 
-                    box-sizing: border-box
-                    overflow: hidden
+                .green_btn
+                    margin-left: -308px
+                    margin-top: 22px
 </style>
 
 <script type="text/ecmascript-6">
+import IconMenu from '@/base/icon-menu/icon-menu'
     export default {
         data() {
             return {
@@ -192,6 +181,19 @@
             }
         },
         methods: {
+            handleMouseEnter({row, column, cell, event}) {
+                row
+            },
+            handleMouseOut({row, column, cell, event}) {
+
+            },
+            setRowStyle({row, rowIndex}) {
+                if (rowIndex % 2 === 1) {
+                    return 'background-color: green; height:100px'
+                } else {
+                    return 'height:100px'
+                }
+            },
             toggleSelection(rows) {
                 if (rows) {
                     rows.forEach(row => {
@@ -204,6 +206,9 @@
             handleSelectionChange(val) {
                 this.multipleSelection = val
             }
+        },
+        components: {
+            IconMenu
         }
     }
 </script>
