@@ -8,6 +8,7 @@ import Album from '@/components/album/album'
 import Playlist from '@/components/playlist/playlist'
 import Login from '@/base/login/login'
 import store from '../store'
+import Play from '@/components/play/play'
 Vue.use(Router)
 
 const router = new Router({
@@ -27,6 +28,10 @@ const router = new Router({
     {
       path: '/rank',
       component: Rank
+    },
+    {
+      path: '/play',
+      component: Play
     },
     {
       path: '/singer',
