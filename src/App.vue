@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <div class="header-wrap">
-      <MHeader></MHeader>
+      <MHeader v-if="header_show"></MHeader>
       <Tab></Tab>
     </div>
     <router-view></router-view>
-    <MFooter></MFooter>
+    <MFooter  v-if="footer_show"></MFooter>
   </div>
 </template>
 
@@ -15,11 +15,19 @@ import MFooter from '@/components/m-footer/m-footer'
 import Tab from '@/components/tab/tab'
 
 export default {
+
+  name: "app",
+  data(){
+      return{
+      header_show:true,
+      footer_show:true,
+    }
+  },
   components: {
     MHeader,
     MFooter,
     Tab
-  }
+  },
 }
 </script>
 

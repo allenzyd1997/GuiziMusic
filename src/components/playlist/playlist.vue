@@ -1,3 +1,4 @@
+
 <template>
     <div class="playlist">
     	<div class="tab">
@@ -58,7 +59,7 @@
 						<ul class="all_albums">
 							<li class="one_album_el">
 								<div class="one_album">
-									<a href="javascript:;">
+									<a href="/#/play">
 										<div class="outer_cover">
 											<img src="../../common/image/11.jpg">
 											<div class="inner_cover">
@@ -76,7 +77,7 @@
 
 							<li class="one_album_el">
 								<div class="one_album">
-									<a href="javascript:;">
+									<a href="/#/play">
 										<div class="outer_cover">
 											<img src="../../common/image/12.jpg">
 											<div class="inner_cover">
