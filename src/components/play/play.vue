@@ -1,6 +1,6 @@
 <template>
     <div class="play">
-        <p>fdslafdalffdlsf</p>
+        <p>this is title</p>
     </div>
 </template>
 
@@ -13,6 +13,7 @@ export default {
     },
     created: function() {
         this.$emit('public_header', false)
+        this.$emit('public_footer', false)
     }
 }
 </script>
