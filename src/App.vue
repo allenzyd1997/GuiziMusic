@@ -5,11 +5,7 @@
       <MHeader v-if="header_show"></MHeader>
       <Tab></Tab>
     </div>
-<<<<<<< HEAD
     <router-view v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view>
-=======
-    <router-view v-on:public_header="public_header" v-on:pubic_footer="public_footer"></router-view>
->>>>>>> 51753d3f7d74b8747306c0bda629d4ad51ba8d99
     <MFooter  v-if="footer_show"></MFooter>
 
   </div>
@@ -33,7 +29,6 @@ export default {
   components: {
     MHeader,
     MFooter,
-<<<<<<< HEAD
     Tab
   },
   methods: {
@@ -44,12 +39,6 @@ export default {
       this.footer_show = bool
     } 
   }
-=======
-    Tab,
-    play
-  }
-  
->>>>>>> 51753d3f7d74b8747306c0bda629d4ad51ba8d99
 }
 </script>
 
