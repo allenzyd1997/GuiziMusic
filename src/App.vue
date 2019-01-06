@@ -3,9 +3,9 @@
 
     <div class="header-wrap">
       <MHeader v-if="header_show"></MHeader>
-      <Tab></Tab>
+      <Tab v-if="tab_show"></Tab>
     </div>
-    <router-view v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view>
+    <router-view v-on:public_tab="public_tab" v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view>
     <MFooter  v-if="footer_show"></MFooter>
 
   </div>
@@ -15,7 +15,7 @@
 import MHeader from '@/components/m-header/m-header'
 import MFooter from '@/components/m-footer/m-footer'
 import Tab from '@/components/tab/tab'
-import play from '@/components/play/play'
+
 
 export default {
 
@@ -24,6 +24,7 @@ export default {
       return{
         header_show:true,
         footer_show:true,
+        tab_show:true,
     }
   },
   components: {
@@ -37,7 +38,10 @@ export default {
     },
     public_footer: function (bool) {
       this.footer_show = bool
-    } 
+    },
+    public_tab:function(bool){
+      this.tab_show = bool
+    },
   }
 }
 </script>
