@@ -37,5 +37,26 @@ export default {
                 }, 500)
             })
         })
+
+        mock.onPost('/user/register').reply(config => {
+            let { username, password } = JSON.parse(config.data)
+            return new Promise((resolve, reject) => {
+                let user = null;
+                setTimeout(() => {
+                    let hasUser = users.some(person => {
+                        if (person.username === username) {
+                            return true
+                        } else {
+                            return false
+                        }                           
+                    }) 
+                    if (hasUser) {
+                        resolve([200, {code: 500, msg: '账号已被注册'}])
+                    } else {
+                        resolve([200, {code: 200, msg: '注册成功'}])
+                    }
+                })
+            })
+        })
     }
 }

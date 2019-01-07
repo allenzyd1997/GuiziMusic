@@ -17,7 +17,7 @@
 
           <span class="pwd">
             <el-button >忘记密码？</el-button>
-            <el-button @click='register'>还没账号,注册一个</el-button>
+            <el-button @click.native.prevent='register'>还没账号,注册一个</el-button>
           </span>
         </el-form>
     <div slot="footer" class="dialog-footer">
@@ -82,7 +82,7 @@ export default {
             })
         },
         register() {
-            this.$emit('showRegisterForm');
+            this.$emit('showRegisterForm')
         }
     },
 }

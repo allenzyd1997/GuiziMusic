@@ -14,11 +14,18 @@
         <div class="carousal-wrap" id="carousal">
             <div class="carousal-container" id="carousal-container">
                 <ul class="carousal-list" id="carousal-list">
-                    <li class="carousal-item"><a href="" class="avatar"><img src="../../common/image/1.jpg"></a></li>
+                    <li class="carousal-item"><a href="" class="avatar">
+                        <img src="../../common/image/1.jpg"></a>
+                    </li>
                     <li class="carousal-item"><a href="" class="avatar"><img src="../../common/image/2.jpg"></a></li>
                     <li class="carousal-item"><a href="" class="avatar"><img src="../../common/image/3.jpg"></a></li>
                     <li class="carousal-item"><a href="" class="avatar"><img src="../../common/image/4.jpg"></a></li>
-                    <li class="carousal-item"><a href="" class="avatar"><img src="../../common/image/5.jpg"></a></li>                                        
+                    <li class="carousal-item"><a href="" class="avatar"><img src="../../common/image/5.jpg"></a></li>  
+                    <li class="carousal-item"><a href="" class="avatar"><img src="../../common/image/6.jpg"></a></li>
+                    <li class="carousal-item"><a href="" class="avatar"><img src="../../common/image/7.jpg"></a></li>
+                    <li class="carousal-item"><a href="" class="avatar"><img src="../../common/image/8.jpg"></a></li>
+                    <li class="carousal-item"><a href="" class="avatar"><img src="../../common/image/9.jpg"></a></li>
+                    <li class="carousal-item"><a href="" class="avatar"><img src="../../common/image/10.jpg"></a></li>                                      
                 </ul>
                 
                 <ul id="carousal-list-copy" class="carousal-list"></ul>
@@ -26,7 +33,7 @@
         </div>
         <div class="lr-tab">
             <button @click='clickPre'><img src="./zuo.png" alt="" class="zuo-btn" ></button>
-            <button @click='clickPre'><img src="./you.png" alt="" class="you-btn"></button>
+            <button @click='clickNext'><img src="./you.png" alt="" class="you-btn"></button>
         </div>
         <div class="spot">
             <span></span>
@@ -37,37 +44,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-
-
-
-
-    function go(){
-        if(carousal_list_copy.offsetWidth-carousal.scrollLeft<=0){    /*offsetWidth:u2可见区域的宽；scrollLeft：d1左边被卷去的长度*/
-            carousal.scrollLeft-=carousal_list_copy.offsetWidth;
-
-        } else {
-            carousal.scrollLeft++;
-
-        }
-    }
-
-
-    function clickPre() {
-        console.log("123")
-        if(GetObj('ISL_Cont').scrollLeft <= 0){GetObj('ISL_Cont').scrollLeft = GetObj('ISL_Cont').scrollLeft + GetObj('List1').offsetWidth}
-        GetObj('ISL_Cont').scrollLeft -= Space ;
-    }
-
-    function clickNext() {
-
-    }
-
-    function scrollUp() {
-        if (carousal.scrollLeft <= 0) {
-            carousal.scrollLeft = carousal.scrollLeft + carousal_list.offsetWidth
-        } 
-        carousal.scrollLeft -= Space
-    }
 
 
 import {GetObj} from '@/common/js/common'
@@ -81,8 +57,14 @@ export default {
             this.init()
             console.log("123")
             if(GetObj('carousal').scrollLeft <= 0){GetObj('carousal').scrollLeft = GetObj('carousal').scrollLeft + GetObj('carousal-list').offsetWidth}
-            GetObj('carousal').scrollLeft -= 500 
-        }        
+            GetObj('carousal').scrollLeft -= 1100 
+        },        
+        clickNext() {
+            if(GetObj('carousal').scrollLeft >= GetObj('carousal-list').scrollWidth) {
+                GetObj('carousal').scrollLeft = GetObj('carousal').scrollLeft - GetObj('carousal-list').scrollWidth
+            }
+            GetObj('carousal').scrollLeft += 1000
+        }
     }
 }
 </script>
@@ -96,7 +78,7 @@ export default {
         width: 196px
         height: 40px
 .carousal-wrap
-    width: 800px
+    width: 1120px
     height: 250px
     margin: 0 auto 
     margin-top: 50px
