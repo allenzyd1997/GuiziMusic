@@ -1,11 +1,12 @@
-
+<template>
+  <div id="app">
 
     <div class="header-wrap">
       <MHeader v-if="header_show"></MHeader>
       <Tab v-if="tab_show"></Tab>
     </div>
-    <router-view v-on:public_tab="public_tab" v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view>
-    <player></player>
+
+    <router-view v-on:public_tab="public_tab" v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view> 
 
     <MFooter  v-if="footer_show"></MFooter>
 
@@ -41,10 +42,11 @@ export default {
     public_footer: function (bool) {
       this.footer_show = bool
     },
-    public_tab: function(bool){
+
+    public_tab:function(bool){
       this.tab_show = bool
     },
-  }
+  }, 
 }
 </script>
 

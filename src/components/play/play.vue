@@ -1,10 +1,11 @@
 <template>
     <div class="player">
         <div class="normal-player" v-show='fullScreen'>
-            播放器
+            aaa
         </div>
         <div class="mini-player" v-show='!fullScreen'>
             mini播放器
+            <audio src="../../common/music/a.mp3" controls="controls"></audio>
         </div>
     </div>
 </template>

@@ -353,6 +353,24 @@
     </div>
 </template>
 
+
+<script type="text/ecmascript-6">
+	import{mapActions} from 'vuex'
+
+	export default{
+	methods:{
+		selectItem(item, index){
+		this.selectPlay({
+		list:this.songs,
+	})
+	},
+	...mapActions([
+		'selectPlay'
+	])
+}
+}
+</script>
+
 <style scoped lang="stylus" rel="stylesheet/stylus">
 a{text-decoration:none}
 
@@ -384,6 +402,7 @@ a{text-decoration:none}
 
 }
 .tab_table{
+	z-index: 10
 	.tab{
 	   float: left; 
 	}
@@ -434,7 +453,7 @@ a{text-decoration:none}
 
 .albums{
 	img{
-		z-index:0
+		z-index: -1
 	}
 }
 
