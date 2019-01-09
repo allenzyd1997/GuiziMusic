@@ -5,6 +5,8 @@
       <MHeader v-if="header_show"></MHeader>
       <Tab v-if="tab_show"></Tab>
     </div>
+    <router-view v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view>
+
     <router-view v-on:public_tab="public_tab" v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view>
     <player></player>
     <MFooter  v-if="footer_show"></MFooter>
@@ -40,7 +42,7 @@ export default {
     },
     public_footer: function (bool) {
       this.footer_show = bool
-    },
+    } 
     public_tab:function(bool){
       this.tab_show = bool
     },
@@ -48,7 +50,12 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+.header-wrap {
+  margin: 0 100px;
+}
+
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

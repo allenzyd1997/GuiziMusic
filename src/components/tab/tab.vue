@@ -22,7 +22,7 @@
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
     .tab-wrap
-
+      margin: 0 50px
       border-top: 1px solid #f2f2f2
       line-height: 51px
       height: 51px
@@ -35,7 +35,7 @@
             text-align: center
             text-decoration: none
             .tab-link   
-                font-size: 15px
+                font-size: 22px
                 color: #000
             &.router-link-active
                 .tab-link   
