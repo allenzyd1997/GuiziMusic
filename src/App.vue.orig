@@ -1,12 +1,18 @@
-
+<template>
+  <div id="app">
 
     <div class="header-wrap">
       <MHeader v-if="header_show"></MHeader>
       <Tab v-if="tab_show"></Tab>
     </div>
+    <router-view v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view>
+
+<<<<<<< HEAD
+    <!-- <router-view v-on:public_tab="public_tab" v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view> -->
+=======
     <router-view v-on:public_tab="public_tab" v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view>
     <player></player>
-
+>>>>>>> 750f5542963dbe7b66fb0766ef4492a96aae5ca4
     <MFooter  v-if="footer_show"></MFooter>
 
   </div>
@@ -41,7 +47,7 @@ export default {
     public_footer: function (bool) {
       this.footer_show = bool
     },
-    public_tab: function(bool){
+    public_tab:function(bool){
       this.tab_show = bool
     },
   }

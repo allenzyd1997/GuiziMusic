@@ -12,9 +12,9 @@ import store from '../store'
 
 import SingerDetail from '@/components/singer-detail/singer-detail'
 import IconMenu from '@/base/icon-menu/icon-menu'
-
+import AlbumDetail from '@/components/album-detail/album-detail'
 import Play from '@/components/play/play'
-
+import Comment from '@/base/comment/comment'
 Vue.use(Router)
 
 const router = new Router({
@@ -55,6 +55,14 @@ const router = new Router({
       path: '/singer-detail',
       component: SingerDetail
     },
+    {
+      path: '/comment',
+      component: Comment
+    },
+    {
+      path: '/album-detail',
+      component: AlbumDetail
+    }
   ]
 })
 

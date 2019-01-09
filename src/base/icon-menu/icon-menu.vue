@@ -20,5 +20,6 @@
 </script>  
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
-
+    .icon-menu
+        transform: scale(0.7)
 </style>

@@ -2,8 +2,6 @@
     <div class="recommand">
         <div class="playlist">
             <div class="section-inner">
-
-                <Carousal></Carousal>
                 <Carousal></Carousal>
             </div>
         </div>
@@ -26,7 +24,7 @@ export default {
         
         .carousal
             margin-bottom: 100px
-            background: linear-gradient(to bottom, #F0F0F0, #FFF)
+            background: linear-gradient(to bottom, #FFF0F0, #FFFFFF);
 </style>
 
 
