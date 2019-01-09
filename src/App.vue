@@ -6,6 +6,7 @@
       <Tab v-if="tab_show"></Tab>
     </div>
     <router-view v-on:public_tab="public_tab" v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view>
+    <player></player>
     <MFooter  v-if="footer_show"></MFooter>
 
   </div>
@@ -15,7 +16,7 @@
 import MHeader from '@/components/m-header/m-header'
 import MFooter from '@/components/m-footer/m-footer'
 import Tab from '@/components/tab/tab'
-
+import Player from  '@/components/play/play'
 
 export default {
 
@@ -30,7 +31,8 @@ export default {
   components: {
     MHeader,
     MFooter,
-    Tab
+    Tab,
+    Player
   },
   methods: {
     public_header: function (bool) {
