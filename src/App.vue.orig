@@ -5,12 +5,14 @@
       <MHeader v-if="header_show"></MHeader>
       <Tab v-if="tab_show"></Tab>
     </div>
-<<<<<<< HEAD
     <router-view v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view>
 
+<<<<<<< HEAD
+    <!-- <router-view v-on:public_tab="public_tab" v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view> -->
 =======
     <router-view v-on:public_tab="public_tab" v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view>
->>>>>>> ab5a687cb9d33548c3c710d7b734021172cbb53d
+    <player></player>
+>>>>>>> 750f5542963dbe7b66fb0766ef4492a96aae5ca4
     <MFooter  v-if="footer_show"></MFooter>
 
   </div>
@@ -20,7 +22,7 @@
 import MHeader from '@/components/m-header/m-header'
 import MFooter from '@/components/m-footer/m-footer'
 import Tab from '@/components/tab/tab'
-
+import Player from  '@/components/play/play'
 
 export default {
 
@@ -35,7 +37,8 @@ export default {
   components: {
     MHeader,
     MFooter,
-    Tab
+    Tab,
+    Player
   },
   methods: {
     public_header: function (bool) {
@@ -43,14 +46,10 @@ export default {
     },
     public_footer: function (bool) {
       this.footer_show = bool
-<<<<<<< HEAD
-    } 
-=======
     },
     public_tab:function(bool){
       this.tab_show = bool
     },
->>>>>>> ab5a687cb9d33548c3c710d7b734021172cbb53d
   }
 }
 </script>
