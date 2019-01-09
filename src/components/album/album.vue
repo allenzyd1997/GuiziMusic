@@ -186,6 +186,8 @@ a{text-decoration:none}
 	font-size: 1em
 	text-align: left
 	margin-left: 100px
+	line-height: 50px
+	font-size: 20px
 	.current_tag
 		text-decoration:none
 		background: #FFA5A5
@@ -218,6 +220,7 @@ a{text-decoration:none}
 		max-width: 800px
 		margin-left: 50px
 		margin-right: 50px	
+		padding-left: 70px
 		.one_album_el
 			list-style:none
 			margin: 20px auto
@@ -231,8 +234,8 @@ a{text-decoration:none}
 					position:relative
 
 					img
-						width:200px
-						height:200px
+						width:240px
+						height:240px
 				.outer_cover:hover img 
 					transform: scale(1.4)
 					transition: all 0.3s ease 0s

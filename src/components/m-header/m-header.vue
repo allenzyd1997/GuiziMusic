@@ -104,11 +104,11 @@ import Register from '@/base/register/register'
                         color: #FFA5A5
         .search
             position: relative
-            left: 300px
+            left: 200px
             width: 250px
             border-radius: 3px
             border: 1px solid #c9c9c9
         .login_btn
             position: relative
-            left: 500px
+            left: 300px
 </style>

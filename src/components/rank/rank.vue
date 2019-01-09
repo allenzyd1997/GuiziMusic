@@ -62,8 +62,11 @@
                         <el-table-column type="selection" width="55">
                         </el-table-column>
                         <el-table-column label="歌曲" width="200" prop="song">
+                            <template scope="scope">
+                                <img src="../../common/image/2.jpg" width="60px" height="60px"><span>刘思源</span>
+                            </template>
                         </el-table-column> 
-                        <el-table-column width="600">
+                        <el-table-column width="400px">
                             <template scope="scope">
                                 <IconMenu></IconMenu>
                             </template>                            
@@ -76,32 +79,11 @@
                         </el-table-column>
                     </el-table> 
                 </div>
+                <div class="mod_page_nav">
+                    <el-pagination background layout="prev, pager, next" :total="1000"></el-pagination>
+                </div>
                 <div class="comment">
-                    <div class="part_hd">
-                        <h2 class="part_tit">
-                            评论
-                            <span class="">
-                                共251723条评论
-                            </span>
-                        </h2>
-                    </div>
-                    <div class="comment_input">
-                        <div class="comment_textarea">
-                            <div class="comment_textarea_inner">
-                                <div class="comment_textarea_blur">
-                                    期待你的神评论...
-                                </div>
-                            </div>
-                        </div>
-                        <div class="comment_tool">
-                            <a href="javascript:;" class="comment_tool_btn">发表评论</a>
-                        </div>
-                    </div>
-                    <div class="all_comment">
-                        <p class="comment_rule">
-                            <a class="rule_btn" href="javascript:;"></a>
-                        </p>
-                    </div>
+                    <Comment></Comment>
                 </div>
             </div>
         </div>
@@ -113,7 +95,7 @@
 
     .main
         padding-top: 60px
-        margin: 0 50px
+        margin: 0 160px
         .toplist_nav
             float: left 
             border-width: 1px
@@ -158,6 +140,7 @@
 </style>
 
 <script type="text/ecmascript-6">
+import Comment from '@/base/comment/comment'
 import IconMenu from '@/base/icon-menu/icon-menu'
     export default {
         data() {
@@ -189,7 +172,7 @@ import IconMenu from '@/base/icon-menu/icon-menu'
             },
             setRowStyle({row, rowIndex}) {
                 if (rowIndex % 2 === 1) {
-                    return 'background-color: green; height:100px'
+                    return 'background-color: rgba(0,0,0,0.1); height:100px'
                 } else {
                     return 'height:100px'
                 }
@@ -208,7 +191,8 @@ import IconMenu from '@/base/icon-menu/icon-menu'
             }
         },
         components: {
-            IconMenu
+            IconMenu,
+            Comment
         }
     }
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <div class="singer-detail">
+    <div class="album-detail">
         <div class="main">
             <div class="singer_data">
                 <span class="data_cover">
@@ -7,24 +7,26 @@
                 </span>
                 <div class="data_cont">
                     <div class="data_name">
-                        <h1 class="data_name_txt" title="G.E.M.邓紫棋">G.E.M.邓紫棋</h1> 
+                        <h1 class="data_name_txt" title="G.E.M.邓紫棋">如何用吃干掉生活中的小确丧</h1> 
                     </div>
                     <div class="data_desc">
                         <div class="data_desc_txt">
-                            中文名：邓紫棋
+                            被嫌弃的唐唐的一生
                         </div>
                     </div>
                     <ul class="data_statistic">
                         <li class="data_statistic_item">
-                            <a href=""><span>单曲</span><strong>264</strong></a>
+                            <a href=""><span>播放量</span><strong>166.0万</strong></a>
                         </li>
                         <li class="data_statistic_item">
-                            <a href=""><span>专辑</span><strong>43</strong></a>
+                            <a href=""><span>收藏量</span><strong>1.2万</strong></a>
                         </li>                        
                     </ul>
                     <div class="data_actions">
-                        <el-button class="btn">播放歌手热门歌曲</el-button>
-                        <el-button>关注799.3万</el-button>
+                        <el-button class="btn">播放全部</el-button>
+                        <el-button>收藏</el-button>
+                        <el-button>评论</el-button>
+                        <el-button>更多</el-button>
                     </div>
                 </div>
             </div>

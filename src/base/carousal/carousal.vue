@@ -1,20 +1,22 @@
 <template>
     <div class="carousal">
         <div class="header">
-            <h2 class="title" >歌单推荐</h2>
+            <div class="title" >
+                <strong>歌</strong><strong>单</strong><strong>推</strong><strong>荐</strong>
+            </div>
         </div>
         <div class="category">
-            <a>为你推荐</a>
-            <a>网络歌曲</a>
-            <a>情歌</a>
-            <a>KTV热歌</a>
-            <a>官方歌单</a>
-            <a>情歌</a>
+            <a class="category_type">为你推荐</a>
+            <a class="category_type">网络歌曲</a>
+            <a class="category_type">情歌</a>
+            <a class="category_type">KTV热歌</a>
+            <a class="category_type">官方歌单</a>
+            <a class="category_type">情歌</a>
         </div>
         <div class="carousal-wrap" id="carousal">
             <div class="carousal-container" id="carousal-container">
                 <ul class="carousal-list" id="carousal-list">
-                    <li class="carousal-item"><a href="" class="avatar">
+                    <li class="carousal-item" ><a href="" class="avatar">
                         <img src="../../common/image/1.jpg"></a>
                     </li>
                     <li class="carousal-item"><a href="" class="avatar"><img src="../../common/image/2.jpg"></a></li>
@@ -32,8 +34,8 @@
             </div>
         </div>
         <div class="lr-tab">
-            <button @click='clickPre'><img src="./zuo.png" alt="" class="zuo-btn" ></button>
-            <button @click='clickNext'><img src="./you.png" alt="" class="you-btn"></button>
+            <a @click='clickPre'><img src="./zuo.png" alt="" class="zuo-btn" ></a>
+            <a @click='clickNext'><img src="./you.png" alt="" class="you-btn"></a>
         </div>
         <div class="spot">
             <span></span>
@@ -57,13 +59,13 @@ export default {
             this.init()
             console.log("123")
             if(GetObj('carousal').scrollLeft <= 0){GetObj('carousal').scrollLeft = GetObj('carousal').scrollLeft + GetObj('carousal-list').offsetWidth}
-            GetObj('carousal').scrollLeft -= 1100 
+            GetObj('carousal').scrollLeft -= 1300
         },        
         clickNext() {
             if(GetObj('carousal').scrollLeft >= GetObj('carousal-list').scrollWidth) {
                 GetObj('carousal').scrollLeft = GetObj('carousal').scrollLeft - GetObj('carousal-list').scrollWidth
             }
-            GetObj('carousal').scrollLeft += 1000
+            GetObj('carousal').scrollLeft += 1300
         }
     }
 }
@@ -77,8 +79,18 @@ export default {
         margin: 0 auto 
         width: 196px
         height: 40px
+        font-size: 34px
+        strong 
+            margin-left: 5px
+.category
+    display: flex
+    width: 60%
+    margin: 0 auto
+    margin-top: 50px
+    .category_type
+        flex: 1
 .carousal-wrap
-    width: 1120px
+    width: 80%
     height: 250px
     margin: 0 auto 
     margin-top: 50px
@@ -88,12 +100,15 @@ export default {
         padding: 5px
         .carousal-list 
             float: left
+            margin-left: -20px
             .carousal-item
                 float: left
                 list-style: none
+                margin-left: 20px
+                margin-right: 20px
                 img 
-                    height: 224px
-                    width: 224px
+                    height: 240px
+                    width: 240px
             .carousal-item:hover img 
                 transform: scale(1.3)
                 transition: all 1s ease 0s
