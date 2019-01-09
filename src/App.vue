@@ -42,8 +42,8 @@ export default {
     },
     public_footer: function (bool) {
       this.footer_show = bool
-    } 
-    public_tab:function(bool){
+    },
+    public_tab: function(bool){
       this.tab_show = bool
     },
   }
