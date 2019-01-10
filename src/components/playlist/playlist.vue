@@ -148,193 +148,193 @@
 							</li>
 						</ul>
 	                </div>
+					<div class="album_content">
+						<ul class="all_albums">
+							<li class="one_album_el">
+								<div class="one_album">
+									<a href="javascript:;">
+										<div class="outer_cover">
+											<img src="../../common/image/4.jpg">
+											<div class="inner_cover">
+												<img src="../../common/image/play_op.png" class="inner_img">
+											</div>
+										</div>
+									</a>
+									<div class="album_intro">
+										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
+										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
+										<p class="publish_time">amount </p>
+									</div>
+								</div>
+							</li>
+							<li class="one_album_el">
+								<div class="one_album">
+									<a href="javascript:;">
+										<div class="outer_cover">
+											<img src="../../common/image/6.jpg">
+											<div class="inner_cover">
+												<img src="../../common/image/play_op.png" class="inner_img">
+											</div>
+										</div>
+									</a>
+									<div class="album_intro">
+										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
+										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
+										<p class="publish_time">amount </p>
+									</div>
+								</div>
+							</li>
+
+							<li class="one_album_el">
+								<div class="one_album">
+									<a href="javascript:;">
+										<div class="outer_cover">
+											<img src="../../common/image/7.jpg">
+											<div class="inner_cover">
+												<img src="../../common/image/play_op.png" class="inner_img">
+											</div>
+										</div>
+									</a>
+									<div class="album_intro">
+										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
+										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
+										<p class="publish_time">amount </p>
+									</div>
+								</div>
+							</li>
+
+							<li class="one_album_el">
+								<div class="one_album">
+									<a href="javascript:;">
+										<div class="outer_cover">
+											<img src="../../common/image/8.jpg">
+											<div class="inner_cover">
+												<img src="../../common/image/play_op.png" class="inner_img">
+											</div>
+										</div>
+									</a>
+									<div class="album_intro">
+										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
+										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
+										<p class="publish_time">amount </p>
+									</div>
+								</div>
+							</li>
+
+							<li class="one_album_el">
+								<div class="one_album">
+									<a href="javascript:;">
+										<div class="outer_cover">
+											<img src="../../common/image/17.jpg">
+											<div class="inner_cover">
+												<img src="../../common/image/play_op.png" class="inner_img">
+											</div>
+										</div>
+									</a>
+									<div class="album_intro">
+										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
+										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
+										<p class="publish_time">amount </p>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="album_content">
+						<ul class="all_albums">
+							<li class="one_album_el">
+								<div class="one_album">
+									<a href="javascript:;">
+										<div class="outer_cover">
+											<img src="../../common/image/10.jpg">
+											<div class="inner_cover">
+												<img src="../../common/image/play_op.png" class="inner_img">
+											</div>
+										</div>
+									</a>
+									<div class="album_intro">
+										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
+										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
+										<p class="publish_time">amount </p>
+									</div>
+								</div>
+							</li>
+
+							<li class="one_album_el">
+								<div class="one_album">
+									<a href="javascript:;">
+										<div class="outer_cover">
+											<img src="../../common/image/9.jpg">
+											<div class="inner_cover">
+												<img src="../../common/image/play_op.png" class="inner_img">
+											</div>
+										</div>
+									</a>
+									<div class="album_intro">
+										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
+										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
+										<p class="publish_time">amount </p>
+									</div>
+								</div>
+							</li>
+
+							<li class="one_album_el">
+								<div class="one_album">
+									<a href="javascript:;">
+										<div class="outer_cover">
+											<img src="../../common/image/1.jpg">
+											<div class="inner_cover">
+												<img src="../../common/image/play_op.png" class="inner_img">
+											</div>
+										</div>
+									</a>
+									<div class="album_intro">
+										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
+										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
+										<p class="publish_time">amount </p>
+									</div>
+								</div>
+							</li>
+
+							<li class="one_album_el">
+								<div class="one_album">
+									<a href="javascript:;">
+										<div class="outer_cover">
+											<img src="../../common/image/lsy.jpg">
+											<div class="inner_cover">
+												<img src="../../common/image/play_op.png" class="inner_img">
+											</div>
+										</div>
+									</a>
+									<div class="album_intro">
+										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
+										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
+										<p class="publish_time">amount </p>
+									</div>
+								</div>
+							</li>
+
+							<li class="one_album_el">
+								<div class="one_album">
+									<a href="javascript:;">
+										<div class="outer_cover">
+											<img src="../../common/image/2.jpg">
+											<div class="inner_cover">
+												<img src="../../common/image/play_op.png" class="inner_img">
+											</div>
+										</div>
+									</a>
+									<div class="album_intro">
+										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
+										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
+										<p class="publish_time">amount </p>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
 	    		</div>
-    			<div class="album_content">
-					<ul class="all_albums">
-						<li class="one_album_el">
-							<div class="one_album">
-								<a href="javascript:;">
-									<div class="outer_cover">
-										<img src="../../common/image/4.jpg">
-										<div class="inner_cover">
-											<img src="../../common/image/play_op.png" class="inner_img">
-										</div>
-									</div>
-								</a>
-								<div class="album_intro">
-									<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-									<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-									<p class="publish_time">amount </p>
-								</div>
-							</div>
-						</li>
 
-						<li class="one_album_el">
-							<div class="one_album">
-								<a href="javascript:;">
-									<div class="outer_cover">
-										<img src="../../common/image/6.jpg">
-										<div class="inner_cover">
-											<img src="../../common/image/play_op.png" class="inner_img">
-										</div>
-									</div>
-								</a>
-								<div class="album_intro">
-									<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-									<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-									<p class="publish_time">amount </p>
-								</div>
-							</div>
-						</li>
-
-						<li class="one_album_el">
-							<div class="one_album">
-								<a href="javascript:;">
-									<div class="outer_cover">
-										<img src="../../common/image/7.jpg">
-										<div class="inner_cover">
-											<img src="../../common/image/play_op.png" class="inner_img">
-										</div>
-									</div>
-								</a>
-								<div class="album_intro">
-									<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-									<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-									<p class="publish_time">amount </p>
-								</div>
-							</div>
-						</li>
-
-						<li class="one_album_el">
-							<div class="one_album">
-								<a href="javascript:;">
-									<div class="outer_cover">
-										<img src="../../common/image/8.jpg">
-										<div class="inner_cover">
-											<img src="../../common/image/play_op.png" class="inner_img">
-										</div>
-									</div>
-								</a>
-								<div class="album_intro">
-									<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-									<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-									<p class="publish_time">amount </p>
-								</div>
-							</div>
-						</li>
-
-						<li class="one_album_el">
-							<div class="one_album">
-								<a href="javascript:;">
-									<div class="outer_cover">
-										<img src="../../common/image/17.jpg">
-										<div class="inner_cover">
-											<img src="../../common/image/play_op.png" class="inner_img">
-										</div>
-									</div>
-								</a>
-								<div class="album_intro">
-									<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-									<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-									<p class="publish_time">amount </p>
-								</div>
-							</div>
-						</li>
-					</ul>
-                </div>
-    			<div class="album_content">
-					<ul class="all_albums">
-						<li class="one_album_el">
-							<div class="one_album">
-								<a href="javascript:;">
-									<div class="outer_cover">
-										<img src="../../common/image/10.jpg">
-										<div class="inner_cover">
-											<img src="../../common/image/play_op.png" class="inner_img">
-										</div>
-									</div>
-								</a>
-								<div class="album_intro">
-									<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-									<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-									<p class="publish_time">amount </p>
-								</div>
-							</div>
-						</li>
-
-						<li class="one_album_el">
-							<div class="one_album">
-								<a href="javascript:;">
-									<div class="outer_cover">
-										<img src="../../common/image/9.jpg">
-										<div class="inner_cover">
-											<img src="../../common/image/play_op.png" class="inner_img">
-										</div>
-									</div>
-								</a>
-								<div class="album_intro">
-									<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-									<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-									<p class="publish_time">amount </p>
-								</div>
-							</div>
-						</li>
-
-						<li class="one_album_el">
-							<div class="one_album">
-								<a href="javascript:;">
-									<div class="outer_cover">
-										<img src="../../common/image/1.jpg">
-										<div class="inner_cover">
-											<img src="../../common/image/play_op.png" class="inner_img">
-										</div>
-									</div>
-								</a>
-								<div class="album_intro">
-									<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-									<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-									<p class="publish_time">amount </p>
-								</div>
-							</div>
-						</li>
-
-						<li class="one_album_el">
-							<div class="one_album">
-								<a href="javascript:;">
-									<div class="outer_cover">
-										<img src="../../common/image/lsy.jpg">
-										<div class="inner_cover">
-											<img src="../../common/image/play_op.png" class="inner_img">
-										</div>
-									</div>
-								</a>
-								<div class="album_intro">
-									<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-									<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-									<p class="publish_time">amount </p>
-								</div>
-							</div>
-						</li>
-
-						<li class="one_album_el">
-							<div class="one_album">
-								<a href="javascript:;">
-									<div class="outer_cover">
-										<img src="../../common/image/2.jpg">
-										<div class="inner_cover">
-											<img src="../../common/image/play_op.png" class="inner_img">
-										</div>
-									</div>
-								</a>
-								<div class="album_intro">
-									<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-									<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-									<p class="publish_time">amount </p>
-								</div>
-							</div>
-						</li>
-					</ul>
-                </div>
     		</div>
 		</div>
 		<div id="album_foot" class="album_foot">

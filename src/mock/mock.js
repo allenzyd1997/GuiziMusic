@@ -9,5 +9,13 @@ const produceData = function (opt) {
         desc: Random.csentence(5,30)
         pic: Random.dataImage('300x250', 'mock的图片')
         total: Random.c
+
+
+
+
+
+
+
+        
     }
 }

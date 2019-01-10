@@ -81,6 +81,7 @@
 
             </div>
             <div class="bg_player">
+<<<<<<< HEAD
                 <div class = "control_bar">
             <audio ref="audio" 
             @pause="onPause" 
@@ -114,6 +115,9 @@
             <el-slider v-model="volume" v-show="show_volume" :format-tooltip="formatVolumeToolTip" vertical:true @change="changeVolume" class="vol_slider"></el-slider>
             </div>
         </div>
+=======
+
+>>>>>>> 12314e01226aff55ab4d32e5ccb51c5832dff2a4
             </div>
         </div>
     </div>
@@ -141,6 +145,7 @@
     export default {
         data () {
             return {
+<<<<<<< HEAD
 
                 audio:{
                     playing:false,
@@ -152,6 +157,8 @@
                 show_play: true,
                 show_volume: true,
 
+=======
+>>>>>>> 12314e01226aff55ab4d32e5ccb51c5832dff2a4
                 tableData: [{
                     song: '关键词',
                     singer: '刘思源',
@@ -318,6 +325,7 @@
                                     vertical-align: middle
                                     width: 186px
                                     height: 186px
+<<<<<<< HEAD
     color: #333
     text-decoration: none
     
@@ -369,5 +377,11 @@
                 width:50px
                 height:50px
                 
+=======
+
+a 
+    color: #333
+    text-decoration: none
+>>>>>>> 12314e01226aff55ab4d32e5ccb51c5832dff2a4
 </style>
 

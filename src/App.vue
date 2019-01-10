@@ -6,7 +6,8 @@
       <Tab v-if="tab_show"></Tab>
     </div>
 
-    <router-view v-on:public_tab="public_tab" v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view> 
+
+     <router-view v-on:public_tab="public_tab" v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view>
 
     <MFooter  v-if="footer_show"></MFooter>
 

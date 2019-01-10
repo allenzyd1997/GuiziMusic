@@ -55,25 +55,25 @@
 
     			<div class="album_content">
 					<ul class="all_albums">
-						<li class="one_album_el">
+						<li class="one_album_el" v-for="item in row1">
 							<div class="one_album">
 								<a href="javascript:;">
 									<div class="outer_cover">
-										<img src="../../common/image/1.jpg">
+										<img v-bind:src="item.image">
 										<div class="inner_cover">
 											<img src="../../common/image/play_op.png" class="inner_img">
 										</div>
 									</div>
 								</a>
 								<div class="album_intro">
-									<a href="javascript:;" class="album_name_link"><p class="album_name">album name</p></a>
-									<a href="javascript:;" class="artist_name_link"><p class="artist_name">artist name</p></a>
-									<p class="publish_time">publish time</p>
+									<a href="javascript:;" class="album_name_link"><p class="album_name">{{item.album_name}}</p></a>
+									<a href="javascript:;" class="artist_name_link"><p class="artist_name">{{item.artist_name}}</p></a>
+									<p class="publish_time">{{item.publish_time}}</p>
 								</div>
 							</div>
 						</li>
 
-						<li class="one_album_el">
+						<!-- <li class="one_album_el">
 							<div class="one_album">
 								<a href="javascript:;">
 									<div class="outer_cover">
@@ -143,11 +143,11 @@
 									<p class="publish_time">publish time</p>
 								</div>
 							</div>
-						</li>
+						</li> -->
 					</ul>
                 </div>
     			
-    			<div id="album_foot" class="album_foot">
+    			<!-- <div id="album_foot" class="album_foot">
     				<a href="javascript:;" class="current_foot">1</a>
     				<a href="javascript:;" class="other_foot">2</a>
     				<a href="javascript:;" class="other_foot">3</a>
@@ -157,7 +157,11 @@
     				<a href="" class="other_foot">
     				<span>></span>
     				</a>
-    			</div>
+    			</div> -->
+				<div id="album_foot" class="album_foot">
+					<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
+					</el-pagination>
+				</div>
     		</div>
     	</div>
     </div>
@@ -166,7 +170,58 @@
 
 
 <script type="text/ecmascript-6">
-
+import {listAlbum} from '@/axios/api'
+	export default {
+		data() {
+			return {
+				page: 1,
+				size: 20,
+				total: 0,
+				filters: {},
+				row1: [],
+				row2: [],
+				row3: [],
+				row4: [],
+				pageLoading: false,
+			}
+		},
+		mounted: function() {
+			this.getRows()
+		},
+		methods: {
+			getRows() {
+				if (this.pageLoading)
+					return 
+				this.pageLoading = true
+				let params = {
+					page: this.page,
+					size: this.size,
+					query: this.filters.query
+				}
+				
+				listAlbum(params).then(res => {
+					this.pageLoading = false
+					console.log('222')
+					console.log(res.data.rows)
+					if (!res.data || !res.data.rows)
+						return 
+					this.total = res.data.total
+					this.page++
+					this.row1 = res.data.rows.slice(0, 5)
+					this.row2 = res.data.rows.slice(5, 10)
+					this.row3 = res.data.rows.slice(10, 15)
+					this.row4 = res.data.rows.slice(15, 20)
+					
+				}).catch(err => {
+                	console.log(err)
+                })
+			},
+			handleCurrentChange(val) {
+				this.page = val
+				this.getRows()
+			}
+		}
+	}	
 </script>
 
 

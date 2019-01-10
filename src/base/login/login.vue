@@ -60,6 +60,7 @@ export default {
                         password: this.User.password
                     }
                     requseLogin(loginParams).then(res => {
+
                         this.logining = false
                         let { code, msg, user} = res.data
                         if (code === 200) {

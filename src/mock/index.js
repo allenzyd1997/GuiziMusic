@@ -1,6 +1,6 @@
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
-
+import Mock from 'mockjs'
 import {users} from './data/user'
 
 export default {
@@ -17,6 +17,7 @@ export default {
 
         mock.onPost('/user/login').reply(config => {
             let { username, password } = JSON.parse(config.data)
+
             return new Promise((resolve, reject) => {
                 let user = null;
                 setTimeout(() => {
@@ -40,6 +41,7 @@ export default {
 
         mock.onPost('/user/register').reply(config => {
             let { username, password } = JSON.parse(config.data)
+            
             return new Promise((resolve, reject) => {
                 let user = null;
                 setTimeout(() => {
@@ -55,6 +57,31 @@ export default {
                     } else {
                         resolve([200, {code: 200, msg: '注册成功'}])
                     }
+                })
+            })
+        })
+
+        mock.onPost('/api/albuminfo/loadPage').reply(req => {
+            return new Promise((resolve, reject) => {
+                console.log(req.data)
+                let data = req.data ? JSON.parse(req.data) : {
+                    size: 20
+                }
+                let result = {
+                    rows: [],
+                    total: 10000
+                }
+                for (let i = 0; i < data.size; i++) {
+                    let item = Mock.mock({
+                        image: Mock.Random.image('240x240', '#ffcc33', '#FFF', 'jpg'),
+                        album_name: Mock.Random.ctitle(5),
+                        artist_name: Mock.Random.cname(),
+                        publish_time: Mock.Random.date('yyyy-MM-dd')
+                    })
+                    result.rows.push(item)
+                }
+                setTimeout(() => {
+                    resolve([200, result])
                 })
             })
         })

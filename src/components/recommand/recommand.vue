@@ -13,7 +13,12 @@ import Carousal from '@/base/carousal/carousal'
 export default {
     components: {
         Carousal
-    }
+    },
+    data() {
+        return {
+            
+        }
+    } 
 }
 
 
@@ -21,11 +26,12 @@ export default {
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
     .playlist
-        
         .carousal
             margin-bottom: 100px
-            background: linear-gradient(to bottom, #FFF0F0, #FFFFFF);
+            background: linear-gradient(to bottom, #FFF0F0, #FFFFFF)
 </style>
+
+
 
 
 
