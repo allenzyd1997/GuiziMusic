@@ -17,7 +17,6 @@
 import MHeader from '@/components/m-header/m-header'
 import MFooter from '@/components/m-footer/m-footer'
 import Tab from '@/components/tab/tab'
-import Player from  '@/components/play/play'
 
 export default {
 
@@ -33,7 +32,6 @@ export default {
     MHeader,
     MFooter,
     Tab,
-    Player
   },
   methods: {
     public_header: function (bool) {
@@ -53,7 +51,7 @@ export default {
 <style scoped>
 
 .header-wrap {
-  margin: 0 100px;
+  margin: 100px;
 }
 
 
