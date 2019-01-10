@@ -5,11 +5,13 @@
       <MHeader v-if="header_show"></MHeader>
       <Tab v-if="tab_show"></Tab>
     </div>
-    <router-view v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view>
 
+<<<<<<< HEAD
     <!-- <router-view v-on:public_tab="public_tab" v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view> -->
     <!-- <router-view v-on:public_tab="public_tab" v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view> -->
-    <player></player>
+=======
+    <router-view v-on:public_tab="public_tab" v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view> 
+>>>>>>> 4074445feb7fea6378337fb9f74287c478d66f27
 
     <MFooter  v-if="footer_show"></MFooter>
 
@@ -45,14 +47,11 @@ export default {
     public_footer: function (bool) {
       this.footer_show = bool
     },
-<<<<<<< HEAD
-    public_tab: function(bool){
-=======
+
     public_tab:function(bool){
->>>>>>> 148424903548a9cc20cde5c88a48032dededf6f3
       this.tab_show = bool
     },
-  }
+  }, 
 }
 </script>
 
