@@ -49,30 +49,30 @@
                         </el-table>                        
                     </div>
                     <div class="mod_song_info">
-                        <div class="song_info">
-                            <a class="song_info_cover" href="javascript:;">
-                                <img src="../../common/image/3.jpg" class="song_info_pic">
-                            </a>
-                            <div class="song_info_name">
-                                歌曲名:
-                                <a href="">太阳</a>
+                            <div class="song_info">
+                                <a class="song_info_cover" href="javascript:;">
+                                    <img src="../../common/image/3.jpg" class="song_info_pic">
+                                </a>
+                                <div class="song_info_name">
+                                    歌曲名:
+                                    <a href="">太阳</a>
+                                </div>
+                                <div class="song_info_singer">
+                                    歌手名:
+                                    <a href="">刘思源</a>
+                                </div>
+                                <div class="song_info_album">
+                                    专辑名:
+                                    <a href="">RISE</a>
+                                </div>
                             </div>
-                            <div class="song_info_singer">
-                                歌手名:
-                                <a href="">刘思源</a>
-                            </div>
-                            <div class="song_info_album">
-                                专辑名:
-                                <a href="">RISE</a>
-                            </div>
-                        </div>
-                        <div class="song_info_lyric">
-                            <div class="song_info_lyric_box">
-                                
+                            <div class="song_info_lyric">
+                                <div class="song_info_lyric_box">
+                                    
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
             <div class="player_ft">
 
@@ -81,43 +81,40 @@
 
             </div>
             <div class="bg_player">
-<<<<<<< HEAD
                 <div class = "control_bar">
-            <audio ref="audio" 
-            @pause="onPause" 
-            @play="onPlay" 
-            @timeupdate="onTimeupdate"
-            @loadedmetadata="onLoadedmetadata"
+                    <audio ref="audio" 
+                    @pause="onPause" 
+                    @play="onPlay" 
+                    @timeupdate="onTimeupdate"
+                    @loadedmetadata="onLoadedmetadata"
 
-            src="../../../static/music/火箭少女101-Light.mp3"  
-            >
-            </audio>
-            
-            <div>
+                    src="../../../static/music/火箭少女101-Light.mp3"  
+                    >
+                    </audio>
+                    
+                    <div>
 
-            <div class="play-stop-buttom">
-                <a href="javascript:;" v-show="show_play" @click="startPlayOrPause"><img src="../../common/image/PLAY.png" class="outer_img"></a>
-                <div class="inner_div">
-                    <a href="javascript:;" v-show="!show_play" @click="startPlayOrPause"><img src="../../common/image/STOP.png" class="inner_img"></a>
+                    <div class="play-stop-buttom">
+                        <a href="javascript:;" v-show="show_play" @click="startPlayOrPause"><img src="../../common/image/PLAY.png" class="outer_img"></a>
+                        <div class="inner_div">
+                            <a href="javascript:;" v-show="!show_play" @click="startPlayOrPause"><img src="../../common/image/STOP.png" class="inner_img"></a>
+                        </div>
+                    </div>
+                    <div class="play_slider">
+                    <el-tag type="info" class="time_played">{{audio.currentTime | formatSecond}}</el-tag>    
+
+                    <el-tag type="info" class="time_max">{{audio.maxTime | formatSecond}}</el-tag>    
+
+                    <el-slider v-model="sliderTime" :format-tooltip="formatProcessToolTip" @change="changeCurrentTime" class="slider"></el-slider>
+                    </div>
+                    <div class="volume_buttom">
+                        <a href="javascript:;"  @click="showVolume"><img src="../../common/image/VOLUME.png" class="volume_img"></a>
+                    </div>
+
+                    <el-slider v-model="volume" v-show="show_volume" :format-tooltip="formatVolumeToolTip"  @change="changeVolume" class="vol_slider"></el-slider>
+                    </div>
                 </div>
-            </div>
 
-            <el-tag type="info" class="time_played">{{audio.currentTime | formatSecond}}</el-tag>    
-
-            <el-tag type="info" class="time_max">{{audio.maxTime | formatSecond}}</el-tag>    
-
-            <el-slider v-model="sliderTime" :format-tooltip="formatProcessToolTip" @change="changeCurrentTime" class="slider"></el-slider>
-
-            <div class="volume_buttom">
-                <a href="javascript:;" @mouseenter="volumeShow" @mouseleave="volumeHide" @click="showVolume"><img src="../../common/image/VOLUME.png" class="volume_img"></a>
-            </div>
-
-            <el-slider v-model="volume" v-show="show_volume" :format-tooltip="formatVolumeToolTip" vertical:true @change="changeVolume" class="vol_slider"></el-slider>
-            </div>
-        </div>
-=======
-
->>>>>>> 12314e01226aff55ab4d32e5ccb51c5832dff2a4
             </div>
         </div>
     </div>
@@ -142,10 +139,15 @@
             return '0:00:00'
             }
         }
+
+    function sliderGetWidth(){
+        return document.documentElement.clientWidth*0.333
+    }
+    
     export default {
         data () {
             return {
-<<<<<<< HEAD
+
 
                 audio:{
                     playing:false,
@@ -157,8 +159,7 @@
                 show_play: true,
                 show_volume: true,
 
-=======
->>>>>>> 12314e01226aff55ab4d32e5ccb51c5832dff2a4
+
                 tableData: [{
                     song: '关键词',
                     singer: '刘思源',
@@ -187,7 +188,7 @@
             'fullScreen',
             'playlist'
             ])
-        }
+        },
         methods:{
         startPlayOrPause(){
             return this.audio.playing? this.pause() : this.play()
@@ -267,13 +268,11 @@
     @import "~common/stylus/variable"
     @import "~common/stylus/mixin"
     .player
-        background-color: rgb(64, 64, 32)
+        color: #000
         .player_logo
             position: absolute
             top: -5px
             left: 20px
-            .player_logo_pic
-                opacity: .3
         .mod_player_login
             position: absolute
             top: 20px
@@ -307,14 +306,15 @@
                     .sb_main
                         position: relative
                     .mod_song_info
-                        position: relative
+                        position: absolute
                         top: 0
-                        right: 0
+                        right: 40px
                         height: 100%
                         text-align: center
                         font-size: 14px
                         line-height: 24px
                         .song_info
+                            
                             .song_info_cover
                                 position: relative
                                 display: block
@@ -322,14 +322,17 @@
                                 height: 186px
                                 margin: auto
                                 .song_info_pic
+                                    top:10px
                                     vertical-align: middle
                                     width: 186px
                                     height: 186px
-<<<<<<< HEAD
-    color: #333
-    text-decoration: none
+
     
 
+
+
+.control_bar
+        background:#000
     .play-stop-buttom
             position:absolute
             top:695px
@@ -347,41 +350,43 @@
             z-index:8
             top:700px
             left:100px
-    .slider
-            z-index:10
-            position: absolute
-            top:700px
-            left:300px
-            width: 600px
+
+  
+        
     .vol_slider
-            top:620px
+            top:700px
             position:absolute
             padding-bottom:100px
-            left:1000px
-            height: 100px
-            
-    .time_played
-            position:absolute
-            z-index:12
-            top:670px
-            left:300px
-            
-    .time_max
-            position:absolute
-            z-index:12
-            top:670px
-            left:840px
+            right:100px
+            width: 100px
+    .play_slider
+        position:absolute
+        z-index:10
+        top:670px
+        left:350px
+        .slider
+                position: absolute
+                width: 500px  
+        .time_played
+                top:-5px          
+        .time_max
+                position:absolute
+                top:-5px
+                left:440px
     .volume_buttom
             position:absolute
+            top:700px
+            right:200px
             .volume_img
-                width:50px
-                height:50px
                 
-=======
+                width:40px
+                height:40px
+                
+
 
 a 
-    color: #333
+    color: #ccc
     text-decoration: none
->>>>>>> 12314e01226aff55ab4d32e5ccb51c5832dff2a4
+
 </style>
 
