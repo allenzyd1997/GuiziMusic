@@ -1,6 +1,6 @@
 # GuiziMusic桂子音乐系统
 
-*7F项目组成员：魏傲帝，EinDan，JqLiu，Letian，大雕萌妹LSY*  
+*7F项目组成员：魏傲帝，EinDan，JqLiu，Letian，LSY*  
 *友情赞助：黑三皮，职场精英HYC*  
 This is a 7F inc Production  
 Vive La 7F inc!!  
