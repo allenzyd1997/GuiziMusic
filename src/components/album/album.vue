@@ -232,7 +232,7 @@ a{text-decoration:none}
 	padding-left:0px
 	margin-top:-100px
 .album_block
-	background: linear-gradient(to bottom, #FFF0F0, #FFFFFF);
+	background: linear-gradient(to bottom, #ffffff, #ffa5a5);
 .tag_list
 	padding-top:20px
 	right:0px

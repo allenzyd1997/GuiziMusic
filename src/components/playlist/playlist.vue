@@ -424,6 +424,7 @@ a{text-decoration:none}
 	
 	display: inline-block;
     width: 150px
+    
 }
 
 	.dropdown-content {
@@ -431,6 +432,7 @@ a{text-decoration:none}
 	    position: absolute;
 	    background-color: #FFFFFF;
 	    min-width: 160px;
+	    z-index:20
 	    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	}
 

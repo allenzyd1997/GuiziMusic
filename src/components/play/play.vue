@@ -27,10 +27,10 @@
                         <el-button class="songlist_btn">清空列表</el-button>
                     </div>
                     <div class="sb_scrollable sb_main">
-                        <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%" selection-change="handleSelectionChange" :row-style="setRowStyle">
+                        <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100% " selection-change="handleSelectionChange" :row-style="setRowStyle">
                             <el-table-column type="selection" width="55">
                             </el-table-column>
-                            <el-table-column label="歌曲" width="200" prop="song">
+                            <el-table-column label="歌曲" width="180" prop="song" >
                                 <template scope="scope">
                                     <img src="../../common/image/2.jpg" width="60px" height="60px"><span>刘思源</span>
                                 </template>
@@ -40,10 +40,10 @@
                                     <IconMenu></IconMenu>
                                 </template>                            
                             </el-table-column>
-                            <el-table-column label="歌手" width="200" prop="singer">
+                            <el-table-column label="歌手" width="180" prop="singer">
 
                             </el-table-column>
-                            <el-table-column label="时长" width="200" prop="duration">
+                            <el-table-column label="时长" width="180" prop="duration">
 
                             </el-table-column>
                         </el-table>                        
@@ -92,13 +92,19 @@
                     >
                     </audio>
                     
-                    <div>
+                    <div class="control_buttoms">
 
-                    <div class="play-stop-buttom">
-                        <a href="javascript:;" v-show="show_play" @click="startPlayOrPause"><img src="../../common/image/PLAY.png" class="outer_img"></a>
-                        <div class="inner_div">
-                            <a href="javascript:;" v-show="!show_play" @click="startPlayOrPause"><img src="../../common/image/STOP.png" class="inner_img"></a>
-                        </div>
+                            <a href="javascript:;"><img src="../../common/image/QUICK_BAK.png" class="qb_buttom"></a>
+
+
+                            <a href="javascript:;" v-show="show_play" @click="startPlayOrPause"><img src="../../common/image/PLAY.png" class="outer_img"></a>
+                            <div class="inner_div">
+                                <a href="javascript:;" v-show="!show_play" @click="startPlayOrPause"><img src="../../common/image/STOP.png" class="inner_img"></a>
+                            </div>
+
+
+                            <a href="javascript:;"><img src="../../common/image/QUICK_FOR.png" class="qf_buttom"></a>
+
                     </div>
                     <div class="play_slider">
                     <el-tag type="info" class="time_played">{{audio.currentTime | formatSecond}}</el-tag>    
@@ -106,7 +112,8 @@
                     <el-tag type="info" class="time_max">{{audio.maxTime | formatSecond}}</el-tag>    
 
                     <el-slider v-model="sliderTime" :format-tooltip="formatProcessToolTip" @change="changeCurrentTime" class="slider"></el-slider>
-                    </div>
+                    
+
                     <div class="volume_buttom">
                         <a href="javascript:;"  @click="showVolume"><img src="../../common/image/VOLUME.png" class="volume_img"></a>
                     </div>
@@ -143,7 +150,7 @@
     function sliderGetWidth(){
         return document.documentElement.clientWidth*0.333
     }
-    
+
     export default {
         data () {
             return {
@@ -268,7 +275,6 @@
     @import "~common/stylus/variable"
     @import "~common/stylus/mixin"
     .player
-        color: #000
         .player_logo
             position: absolute
             top: -5px
@@ -285,7 +291,7 @@
                     float: left 
                     margin-right: 15px
                 .player_login_out
-                    color: #fff
+                    color: #ffa5a5
                     opacity: .3
                     line-height: 30px
                     position: absolute
@@ -293,6 +299,7 @@
                     right: -99px
         .mod_player
             .player_bd
+                background: #FFA5A5
                 position: absolute
                 top: 11%
                 bottom: 18%
@@ -302,12 +309,13 @@
                     display: block
                     .mod_songlist_toolbar
                         position: relative
+                        top:10px
                         margin-bottom: 20px
                     .sb_main
                         position: relative
                     .mod_song_info
                         position: absolute
-                        top: 0
+                        top: 100px
                         right: 40px
                         height: 100%
                         text-align: center
@@ -330,34 +338,44 @@
     
 
 
-
+.bg_player
+    padding:300px
+    width:840px
+    background: #000
 .control_bar
-        background:#000
-    .play-stop-buttom
+    .control_buttoms
+
+        position:absolute
+        top:695px
+        left:100px
+        z-index:10
+        .qb_buttom
             position:absolute
-            top:695px
-            left:150px
-            z-index:10
-            .outer_img
-                width:50px
-                height:50px
-            .inner_img
-                width:50px
-                height:50px
-            
-    .play-button
+            left:-20px
+            width:50px
+            height:50px
+        .outer_img
             position:absolute
-            z-index:8
-            top:700px
-            left:100px
+            left:40px
+            width:50px
+            height:50px
+        .inner_img
+            position: absolute
+            left:35px
+            width:50px
+            height:50px
+        .qf_buttom
+            position:absolute
+            left:90px
+            width:50px
+            height:50px          
 
   
         
     .vol_slider
-            top:700px
             position:absolute
             padding-bottom:100px
-            right:100px
+            left: 750px
             width: 100px
     .play_slider
         position:absolute
@@ -375,8 +393,7 @@
                 left:440px
     .volume_buttom
             position:absolute
-            top:700px
-            right:200px
+            left:700px
             .volume_img
                 
                 width:40px
@@ -385,7 +402,7 @@
 
 
 a 
-    color: #ccc
+    color: #FFA5A5
     text-decoration: none
 
 </style>
