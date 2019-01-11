@@ -1,0 +1,161 @@
+
+    @import "~common/stylus/variable"
+    @import "~common/stylus/mixin"
+    .player
+
+        .player_logo_pic
+            width:80px
+            height:80px
+
+        .player_logo
+            position: absolute
+            top: -15px
+            left: 40px
+        .mod_player_login
+            position: absolute
+            top: 40px
+            right: 20px
+            text-align: right
+            padding-right: 28px
+            .player_login
+                .player_login_link
+                    position: relative
+                    float: left 
+                    margin-right: 15px
+                .player_login_out
+                    color: #ffa5a5
+                    opacity: .3
+                    line-height: 30px
+                    position: absolute
+                    top: 0
+                    right: -99px
+        .mod_player
+            .player_bd
+                background: #fff
+                position: absolute
+                top: 11%
+                bottom: 18%
+                width: 100%
+                cursor: default
+                .player_style_normal
+                    display: block
+                    .mod_songlist_toolbar
+                        position: relative
+                        top:10px
+                        margin-bottom: 20px
+                    .sb_main
+                        position: relative
+                    .mod_song_info
+                        position: absolute
+                        top: 100px
+                        right: 40px
+                        height: 100%
+                        text-align: center
+                        font-size: 14px
+                        line-height: 24px
+                        .song_info
+                            
+                            .song_info_cover
+                                position: relative
+                                display: block
+                                width: 186px
+                                height: 186px
+                                margin: auto
+                                .song_info_pic
+                                    top:10px
+                                    vertical-align: middle
+                                    width: 186px
+                                    height: 186px
+
+    
+
+.table_list
+    width:1000px;
+    height:450px;
+    background: #fff0f0
+    overflow-y:scroll;  /*纵向滚动条始终显示 */
+    overflow-x:none;
+    table
+        border: 0px
+        width:984px;   /*表格宽度＝div宽度(500px)－滚动条宽度(16px) */
+        thead
+            tr
+
+                POSITION: relative;  TOP:0px;  /*绝对定位 */
+                height:30px
+                background:#cccccc;
+            
+                
+            .title
+                color:#FFA5A5
+        tr
+            height:100px
+
+
+.bg_player
+    padding:300px
+    width:840px
+    height:230px
+    background:#000
+.control_bar
+    .control_buttoms
+
+        position:absolute
+        top:695px
+        left:100px
+        z-index:10
+        .qb_buttom
+            position:absolute
+            left:-20px
+            width:50px
+            height:50px
+        .outer_img
+            position:absolute
+            left:40px
+            width:50px
+            height:50px
+        .inner_img
+            position: absolute
+            left:35px
+            width:50px
+            height:50px
+        .qf_buttom
+            position:absolute
+            left:90px
+            width:50px
+            height:50px          
+
+  
+        
+    .vol_slider
+            position:absolute
+            padding-bottom:100px
+            left: 750px
+            width: 100px
+    .play_slider
+        position:absolute
+        z-index:10
+        top:670px
+        left:350px
+        .slider
+                position: absolute
+                width: 500px  
+        .time_played
+                top:-5px          
+        .time_max
+                position:absolute
+                top:-5px
+                left:440px
+    .volume_buttom
+            position:absolute
+            left:700px
+            .volume_img
+                
+                width:40px
+                height:40px
+                
+
+
+a 
+    color: #FFA5A5
+    text-decoration: none

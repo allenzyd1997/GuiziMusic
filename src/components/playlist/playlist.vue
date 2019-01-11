@@ -57,280 +57,80 @@
     			<div class="albums">
 	    			<div class="album_content">
 						<ul class="all_albums">
-							<li class="one_album_el">
+							<li class="one_album_el" v-for = "item in row1">
 								<div class="one_album">
 									<a href="/#/play">
 										<div class="outer_cover">
-											<img src="../../common/image/11.jpg">
+											<img :src="item.image">
 											<div class="inner_cover">
 												<img src="../../common/image/play_op.png" class="inner_img">
 											</div>
 										</div>
 									</a>
 									<div class="album_intro">
-										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-										<p class="publish_time">amount </p>
+										<a href="javascript:;" class="album_name_link"><p class="album_name">歌单： {{item.list_name}}</p></a>
+										<a href="javascript:;" class="artist_name_link"><p class="artist_name">创建者： {{item.list_creater}}</p></a>
+										<p class="publish_time">播放量：{{item.list_amount}}</p>
 									</div>
 								</div>
-							</li>
-
-							<li class="one_album_el">
+							</li> 
+						</ul>
+						<ul class="all_albums">
+							<li class="one_album_el" v-for = "item in row2">
 								<div class="one_album">
 									<a href="/#/play">
 										<div class="outer_cover">
-											<img src="../../common/image/12.jpg">
+											<img :src="item.image">
 											<div class="inner_cover">
 												<img src="../../common/image/play_op.png" class="inner_img">
 											</div>
 										</div>
 									</a>
 									<div class="album_intro">
-										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-										<p class="publish_time">amount </p>
+										<a href="javascript:;" class="album_name_link"><p class="album_name">歌单： {{item.list_name}}</p></a>
+										<a href="javascript:;" class="artist_name_link"><p class="artist_name">创建者： {{item.list_creater}}</p></a>
+										<p class="publish_time">播放量：{{item.list_amount}}</p>
 									</div>
 								</div>
-							</li>
-
-							<li class="one_album_el">
-								<div class="one_album">
-									<a href="javascript:;">
-										<div class="outer_cover">
-											<img src="../../common/image/13.jpg">
-											<div class="inner_cover">
-												<img src="../../common/image/play_op.png" class="inner_img">
-											</div>
-										</div>
-									</a>
-									<div class="album_intro">
-										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-										<p class="publish_time">amount </p>
-									</div>
-								</div>
-							</li>
-
-							<li class="one_album_el">
-								<div class="one_album">
-									<a href="javascript:;">
-										<div class="outer_cover">
-											<img src="../../common/image/14.jpg">
-											<div class="inner_cover">
-												<img src="../../common/image/play_op.png" class="inner_img">
-											</div>
-										</div>
-									</a>
-									<div class="album_intro">
-										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-										<p class="publish_time">amount </p>
-									</div>
-								</div>
-							</li>
-
-							<li class="one_album_el">
-								<div class="one_album">
-									<a href="javascript:;">
-										<div class="outer_cover">
-											<img src="../../common/image/15.jpg">
-											<div class="inner_cover">
-												<img src="../../common/image/play_op.png" class="inner_img">
-											</div>
-										</div>
-									</a>
-									<div class="album_intro">
-										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-										<p class="publish_time">amount </p>
-									</div>
-								</div>
-							</li>
+							</li> 
 						</ul>
-	                </div>
-					<div class="album_content">
 						<ul class="all_albums">
-							<li class="one_album_el">
+							<li class="one_album_el" v-for = "item in row3">
 								<div class="one_album">
-									<a href="javascript:;">
+									<a href="/#/play">
 										<div class="outer_cover">
-											<img src="../../common/image/4.jpg">
+											<img :src="item.image">
 											<div class="inner_cover">
 												<img src="../../common/image/play_op.png" class="inner_img">
 											</div>
 										</div>
 									</a>
 									<div class="album_intro">
-										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-										<p class="publish_time">amount </p>
+										<a href="javascript:;" class="album_name_link"><p class="album_name">歌单： {{item.list_name}}</p></a>
+										<a href="javascript:;" class="artist_name_link"><p class="artist_name">创建者： {{item.list_creater}}</p></a>
+										<p class="publish_time">播放量：{{item.list_amount}}</p>
 									</div>
 								</div>
-							</li>
-							<li class="one_album_el">
-								<div class="one_album">
-									<a href="javascript:;">
-										<div class="outer_cover">
-											<img src="../../common/image/6.jpg">
-											<div class="inner_cover">
-												<img src="../../common/image/play_op.png" class="inner_img">
-											</div>
-										</div>
-									</a>
-									<div class="album_intro">
-										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-										<p class="publish_time">amount </p>
-									</div>
-								</div>
-							</li>
-
-							<li class="one_album_el">
-								<div class="one_album">
-									<a href="javascript:;">
-										<div class="outer_cover">
-											<img src="../../common/image/7.jpg">
-											<div class="inner_cover">
-												<img src="../../common/image/play_op.png" class="inner_img">
-											</div>
-										</div>
-									</a>
-									<div class="album_intro">
-										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-										<p class="publish_time">amount </p>
-									</div>
-								</div>
-							</li>
-
-							<li class="one_album_el">
-								<div class="one_album">
-									<a href="javascript:;">
-										<div class="outer_cover">
-											<img src="../../common/image/8.jpg">
-											<div class="inner_cover">
-												<img src="../../common/image/play_op.png" class="inner_img">
-											</div>
-										</div>
-									</a>
-									<div class="album_intro">
-										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-										<p class="publish_time">amount </p>
-									</div>
-								</div>
-							</li>
-
-							<li class="one_album_el">
-								<div class="one_album">
-									<a href="javascript:;">
-										<div class="outer_cover">
-											<img src="../../common/image/17.jpg">
-											<div class="inner_cover">
-												<img src="../../common/image/play_op.png" class="inner_img">
-											</div>
-										</div>
-									</a>
-									<div class="album_intro">
-										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-										<p class="publish_time">amount </p>
-									</div>
-								</div>
-							</li>
+							</li> 
 						</ul>
-					</div>
-					<div class="album_content">
 						<ul class="all_albums">
-							<li class="one_album_el">
+							<li class="one_album_el" v-for = "item in row4">
 								<div class="one_album">
-									<a href="javascript:;">
+									<a href="/#/play">
 										<div class="outer_cover">
-											<img src="../../common/image/10.jpg">
+											<img :src="item.image">
 											<div class="inner_cover">
 												<img src="../../common/image/play_op.png" class="inner_img">
 											</div>
 										</div>
 									</a>
 									<div class="album_intro">
-										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-										<p class="publish_time">amount </p>
+										<a href="javascript:;" class="album_name_link"><p class="album_name">歌单： {{item.list_name}}</p></a>
+										<a href="javascript:;" class="artist_name_link"><p class="artist_name">创建者： {{item.list_creater}}</p></a>
+										<p class="publish_time">播放量：{{item.list_amount}}</p>
 									</div>
 								</div>
-							</li>
-
-							<li class="one_album_el">
-								<div class="one_album">
-									<a href="javascript:;">
-										<div class="outer_cover">
-											<img src="../../common/image/9.jpg">
-											<div class="inner_cover">
-												<img src="../../common/image/play_op.png" class="inner_img">
-											</div>
-										</div>
-									</a>
-									<div class="album_intro">
-										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-										<p class="publish_time">amount </p>
-									</div>
-								</div>
-							</li>
-
-							<li class="one_album_el">
-								<div class="one_album">
-									<a href="javascript:;">
-										<div class="outer_cover">
-											<img src="../../common/image/1.jpg">
-											<div class="inner_cover">
-												<img src="../../common/image/play_op.png" class="inner_img">
-											</div>
-										</div>
-									</a>
-									<div class="album_intro">
-										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-										<p class="publish_time">amount </p>
-									</div>
-								</div>
-							</li>
-
-							<li class="one_album_el">
-								<div class="one_album">
-									<a href="javascript:;">
-										<div class="outer_cover">
-											<img src="../../common/image/lsy.jpg">
-											<div class="inner_cover">
-												<img src="../../common/image/play_op.png" class="inner_img">
-											</div>
-										</div>
-									</a>
-									<div class="album_intro">
-										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-										<p class="publish_time">amount </p>
-									</div>
-								</div>
-							</li>
-
-							<li class="one_album_el">
-								<div class="one_album">
-									<a href="javascript:;">
-										<div class="outer_cover">
-											<img src="../../common/image/2.jpg">
-											<div class="inner_cover">
-												<img src="../../common/image/play_op.png" class="inner_img">
-											</div>
-										</div>
-									</a>
-									<div class="album_intro">
-										<a href="javascript:;" class="album_name_link"><p class="album_name">list name</p></a>
-										<a href="javascript:;" class="artist_name_link"><p class="artist_name">list creater</p></a>
-										<p class="publish_time">amount </p>
-									</div>
-								</div>
-							</li>
+							</li> 
 						</ul>
 					</div>
 	    		</div>
@@ -338,17 +138,9 @@
     		</div>
 		</div>
 		<div id="album_foot" class="album_foot">
-			<a href="javascript:;" class="current_foot">1</a>
-			<a href="javascript:;" class="other_foot">2</a>
-			<a href="javascript:;" class="other_foot">3</a>
-			<a href="javascript:;" class="other_foot">4</a>
-			<a href="javascript:;" class="other_foot">5</a>
-			<a href="javascript:;" class="other_foot">6</a>
-			<a href="" class="other_foot">
-			<span>></span>
-			</a>
-		</div>
-
+					<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
+					</el-pagination>
+				</div>
 
     </div>
 </template>
@@ -356,40 +148,106 @@
 
 <script type="text/ecmascript-6">
 	import{mapActions} from 'vuex'
+	import {listSongList} from '@/axios/api'
+
+
 
 	export default{
-	methods:{
-		selectItem(item, index){
-		this.selectPlay({
-		list:this.songs,
-	})
+
+	data(){
+		return{
+			page:1,
+			size:20,
+			total:0,
+			filters:{},
+			row1:[],
+			row2:[],
+			row3:[],
+			row4:[],
+			pageLoading:false,
+		}
 	},
-	...mapActions([
-		'selectPlay'
-	])
-}
+	mounted: function() {
+			this.getRows()
+	},
+	methods:{
+		getRows() {
+				if (this.pageLoading)
+					return 
+				this.pageLoading = true
+				let params = {
+					page: this.page,
+					size: this.size,
+					query: this.filters.query
+				}
+				
+				listSongList(params).then(res => {
+					this.pageLoading = false
+					console.log('222')
+					console.log(res.data.rows)
+					if (!res.data || !res.data.rows)
+						return 
+					this.total = res.data.total
+					this.page++
+					this.row1 = res.data.rows.slice(0, 5)
+					this.row2 = res.data.rows.slice(5, 10)
+					this.row3 = res.data.rows.slice(10, 15)
+					this.row4 = res.data.rows.slice(15, 20)
+					
+				}).catch(err => {
+                	console.log(err)
+                })
+			},
+			handleCurrentChange(val) {
+				this.page = val
+				this.getRows()
+			}
+	},
 }
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
 a{text-decoration:none}
+.playlist
+	background-color: rgb(255,0,100);
+	background-image: 
+	
+	repeating-linear-gradient(90deg, transparent, transparent 50px,
+      rgba(0,160,50, 0.25) 50px, rgba(0,160,50, 0.25) 56px, transparent 56px, transparent 63px,
+      rgba(0,160,50, 0.25) 63px, rgba(0,160,50, 0.25) 69px, transparent 69px, transparent 116px,
+      rgba(255, 206, 0, 0.25) 116px, rgba(255, 206, 0, 0.25) 166px),
 
+	repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(0,160,50, 0.25) 50px,
+	rgba(0,160,50, 0.25) 56px, transparent 56px, transparent 63px, rgba(0,160,50, 0.25) 63px,
+	rgba(0,160,50, 0.25) 69px, transparent 69px, transparent 116px, rgba(255, 206, 0, 0.25) 116px,
+	rgba(255, 206, 0, 0.25) 166px),
+
+	repeating-linear-gradient(-45deg, transparent, transparent 5px, rgba(143, 77, 63, 0.25) 5px,
+	rgba(143, 77, 63, 0.25) 10px),
+
+	repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(143, 77, 63, 0.25) 5px,
+	rgba(143, 77, 63, 0.25) 10px);
 .head{
 	.h_title{
 		width:150px
-		background:#FFA5A5
+		color:#fff
 	}
 	.recommand_or_new{
-		width:100px
 		text-align:center
 		margin-top:-40px
 		margin-left:1300px
+		width:100px
 
-		background:#FFA5A5
-		a{
-
-			color:#000
+		a{	
+			
+			color:#fff	
+			padding:10px
 		}
+		a:hover{
+			color:#ffa0cf
+			background:#000		
+		}
+
 	}
 }
 
@@ -460,10 +318,11 @@ a{text-decoration:none}
 }
 
 .album_content
+
 	.all_albums
 		display: flex
-		width: 100%
 		max-width: 800px
+		width: 100%
 		margin-left: 50px
 		margin-right: 50px	
 		padding-left: 70px
@@ -491,8 +350,8 @@ a{text-decoration:none}
 
 				.inner_cover
 					position:absolute
-					top:70px
-					right:70px
+					top:90px
+					right:90px
 					img
 						width:60px
 						height:60px
@@ -507,18 +366,18 @@ a{text-decoration:none}
 						-o-transition: opacity 0.3s ease 0s;
 						-ms-transition: opacity 0.3s ease 0s;
 				.album_intro
-					color:#d1005d
+					color:#80ff95
 
 					.album_name_link
 						.album_name
-							color:#d1005d
+							color:#80ff95
 							text-align: left
 						.album_name:hover
 							color:#380177
 
 					.artist_name_link
 						.artist_name
-							color:#d1005d
+							color:#80ff95
 							position:relative
 							text-align: left
 							top:-20px
@@ -539,7 +398,9 @@ a{text-decoration:none}
 
 
 .album_foot
-	margin-top:20px
+	position:relative
+	right:500px
+
 	.current_foot
 
 		background: #FFA5A5

@@ -85,5 +85,30 @@ export default {
                 })
             })
         })
+
+        mock.onPost('/api/listinfo/loadPage').reply(req => {
+            return new Promise((resolve, reject) => {
+                console.log(req.data)
+                let data = req.data ? JSON.parse(req.data) : {
+                    size: 20
+                }
+                let result = {
+                    rows: [],
+                    total: 1000
+                }
+                for (let i = 0; i < data.size; i++) {
+                    let item = Mock.mock({
+                        image: Mock.Random.image('240x240', '#00000', '#FFF', 'jpg'),
+                        list_name: Mock.Random.ctitle(5),
+                        list_creater: Mock.Random.cname(),
+                        list_amount: Mock.Random.natural(0, 2000)
+                    })
+                    result.rows.push(item)
+                }
+                setTimeout(() => {
+                    resolve([200, result])
+                })
+            })
+        })
     }
 }

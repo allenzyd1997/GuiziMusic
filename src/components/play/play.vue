@@ -26,27 +26,44 @@
                         <el-button class="songlist_btn">删除</el-button>
                         <el-button class="songlist_btn">清空列表</el-button>
                     </div>
-                    <div class="sb_scrollable sb_main">
-                        <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100% " selection-change="handleSelectionChange" :row-style="setRowStyle">
-                            <el-table-column type="selection" width="55">
-                            </el-table-column>
-                            <el-table-column label="歌曲" width="180" prop="song" >
-                                <template scope="scope">
-                                    <img src="../../common/image/2.jpg" width="60px" height="60px"><span>刘思源</span>
-                                </template>
-                            </el-table-column> 
-                            <el-table-column width="400px">
-                                <template scope="scope">
-                                    <IconMenu></IconMenu>
-                                </template>                            
-                            </el-table-column>
-                            <el-table-column label="歌手" width="180" prop="singer">
+                    <div class="table_list">
+                        <table>
+                            <thead>
+                                <tr class = "title">
+                                    <th>
+                                        全选
+                                    </th>
+                                    <th>
+                                        歌曲
+                                    </th>
+                                    <th>
+                                        歌手
+                                    </th>
+                                    <th>
+                                        时长
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tr v-for = "(song, index) in tableData">
+                                <th>
+                                    <a href="javascript:;" v-show="song.selected" @click="selectSong(index)"><img src="../../common/image/select.png" class="outer_img"></a>
 
-                            </el-table-column>
-                            <el-table-column label="时长" width="180" prop="duration">
-
-                            </el-table-column>
-                        </el-table>                        
+                                    <div class="inner_div">
+                                            <a href="javascript:;" v-show="!song.selected" @click="selectSong(index)"><img src="../../common/image/not_select.png" class="inner_img"></a>
+                                     </div>
+                                </th>
+                                <th>
+                                    {{song.song_name}}
+                                </th>
+                                <th>
+                                    {{song.singer}}
+                                </th>
+                                <th>
+                                    {{song.duration}}
+                                </th>
+                            </tr>
+                        </table>
+                                            
                     </div>
                     <div class="mod_song_info">
                             <div class="song_info">
@@ -55,7 +72,7 @@
                                 </a>
                                 <div class="song_info_name">
                                     歌曲名:
-                                    <a href="">太阳</a>
+                                    <a href="">719最帅的人是这首歌的歌手</a>
                                 </div>
                                 <div class="song_info_singer">
                                     歌手名:
@@ -63,12 +80,11 @@
                                 </div>
                                 <div class="song_info_album">
                                     专辑名:
-                                    <a href="">RISE</a>
+                                    <a href="">719</a>
                                 </div>
                             </div>
                             <div class="song_info_lyric">
                                 <div class="song_info_lyric_box">
-                                    
                                 </div>
                             </div>
                         </div>
@@ -165,24 +181,38 @@
                 volume: 100,
                 show_play: true,
                 show_volume: true,
+                activetest:true,
 
 
                 tableData: [{
-                    song: '关键词',
+                    song_name: 'rocket girl',
                     singer: '刘思源',
-                    duration: '03:32',
-                },
-                {
-                    song: '关键词',
+                    duration: '03:12',
+                    selected: true
+                },{
+                    song_name: 'rocket girl',
+                    singer: '杨超越',
+                    duration: '03:12',
+                    selected: false
+                },{
+                    song_name: 'rocket girl',
                     singer: '刘思源',
-                    duration: '03:32',
+                    duration: '03:12',
+                    selected: false
+                },{
+                    song_name: 'rocket girl',
+                    singer: '杨超越',
+                    duration: '03:12',
+                    selected: false
+                },{
+                    song_name: 'rocket girl',
+                    singer: '魏志恒',
+                    duration: '03:12',
+                    selected: false
                 },
-                {
-                    song: '关键词',
-                    singer: '刘思源',
-                    duration: '03:32',
-                },
-                ]
+                ],
+
+                selectedTable:[],
             }
         },
         created: function(){
@@ -197,66 +227,91 @@
             ])
         },
         methods:{
-        startPlayOrPause(){
-            return this.audio.playing? this.pause() : this.play()
-        },
-        play(){
-            this.$refs.audio.play()
-        },
-        pause(){
-            this.$refs.audio.pause()
-        },
-        onPlay(){
-            this.audio.playing=true
-            this.show_play = false
-        },
-        onPause(){
-            this.audio.playing=false
-            this.show_play = true
-        },
-        showVolume(){
-            this.show_volume = !this.show_volume
-        },
-        volumeShow(){
-            this.show_volume = true
-        },
-        volumeHide(){
-            this.show_volume = false
-        },
-        onLoadedmetadata(res){
-            console.log('loadedmetadata')
-            console.log(res)
-            this.audio.maxTime = parseInt(res.target.duration)
-        },
-        // 拖动进度条，改变当前时间，index是进度条改变时的回调函数的参数0-100之间，需要换算成实际时间
-        changeCurrentTime(index){
-          this.$refs.audio.currentTime = parseInt(index)
-        },
-        // 当音频当前时间改变后，进度条也要改变
-        onTimeupdate(res) {
-          //console.log('timeupdate')
-          //console.log(res)
-          this.audio.currentTime = res.target.currentTime
-          this.sliderTime = parseInt(this.audio.currentTime / this.audio.maxTime * 100)
-        },
+            startPlayOrPause(){
+                return this.audio.playing? this.pause() : this.play()
+            },
+            play(){
+                this.$refs.audio.play()
+            },
+            pause(){
+                this.$refs.audio.pause()
+            },
+            onPlay(){
+                this.audio.playing=true
+                this.show_play = false
+            },
+            onPause(){
+                this.audio.playing=false
+                this.show_play = true
+            },
+            showVolume(){
+                this.show_volume = !this.show_volume
+            },
+            volumeShow(){
+                this.show_volume = true
+            },
+            volumeHide(){
+                this.show_volume = false
+            },
+            onLoadedmetadata(res){
+                console.log('loadedmetadata')
+                console.log(res)
+                this.audio.maxTime = parseInt(res.target.duration)
+            },
+            // 拖动进度条，改变当前时间，index是进度条改变时的回调函数的参数0-100之间，需要换算成实际时间
+            changeCurrentTime(index){
+              this.$refs.audio.currentTime = parseInt(index)
+            },
+            // 当音频当前时间改变后，进度条也要改变
+            onTimeupdate(res) {
+              //console.log('timeupdate')
+              //console.log(res)
+              this.audio.currentTime = res.target.currentTime
+              this.sliderTime = parseInt(this.audio.currentTime / this.audio.maxTime * 100)
+            },
 
-        // 进度条格式化toolTip
-        formatProcessToolTip(index = 0) {
-          index = parseInt(this.audio.maxTime / 100 * index)
-          return '进度条: ' + realFormatSecond(index)
-        },
+            // 进度条格式化toolTip
+            formatProcessToolTip(index = 0) {
+              index = parseInt(this.audio.maxTime / 100 * index)
+              return '进度条: ' + realFormatSecond(index)
+            },
 
-        changeVolume(index = 0){
-            this.$refs.audio.volume = index / 100
-            this.volume = index
-        },
-        formatVolumeToolTip(index = 0){
-            index = parseInt(index)
-            return '音量: '+ index
-        },
+            changeVolume(index = 0){
+                this.$refs.audio.volume = index / 100
+                this.volume = index
+            },
+            formatVolumeToolTip(index = 0){
+                index = parseInt(index)
+                return '音量: '+ index
+            },
 
 
 
+
+            //这里开始业务控制功能Jan.11
+            selectSong(index){
+                //将Vue tableData中的键值进行改变，主要是改前面的选中动画
+                let origin_el = this.tableData[index];
+                
+                console.log(origin_el);
+
+                this.tableData[index].selected = !this.tableData[index].selected;
+
+                this.$set(this.tableData,index,this.tableData[index]);
+
+                //将选中的歌加入selectedTable，取消选中的移出此数组
+                if (origin_el.selected == false){
+                    this.selectedTable.push(this.tableData[index]);
+                }
+                else{
+                    let found_index = this.selectedTable.indexOf(origin_el);
+                    this.selectedTable.splice(found_index, 1);
+                }
+                console.log("111")
+                console.log(this.selectedTable.join("|"));
+                console.log("222")
+
+            },
         },
 
         filters:{
@@ -270,18 +325,22 @@
     }
 </script>
 
-
 <style scoped lang="stylus" rel="stylesheet/stylus">
     @import "~common/stylus/variable"
     @import "~common/stylus/mixin"
     .player
+
+        .player_logo_pic
+            width:80px
+            height:80px
+
         .player_logo
             position: absolute
-            top: -5px
-            left: 20px
+            top: -15px
+            left: 40px
         .mod_player_login
             position: absolute
-            top: 20px
+            top: 40px
             right: 20px
             text-align: right
             padding-right: 28px
@@ -299,7 +358,7 @@
                     right: -99px
         .mod_player
             .player_bd
-                background: #FFA5A5
+                background: #fff
                 position: absolute
                 top: 11%
                 bottom: 18%
@@ -337,11 +396,47 @@
 
     
 
+.table_list
+    width:1000px;
+    height:450px;
+    background: #fff0f0
+    overflow-y:scroll;  /*纵向滚动条始终显示 */
+    overflow-x:none;
+    table
+        border: 0px
+        width:984px;   /*表格宽度＝div宽度(500px)－滚动条宽度(16px) */
+        thead
+            tr
+
+                POSITION: relative;  TOP:0px;  /*绝对定位 */
+                height:30px
+                background:#cccccc;
+            
+                
+            .title
+                color:#FFA5A5
+        tr
+            height:100px
+            th
+                a
+                    .outer_img
+                        
+                        position:relative
+
+                        width: 50px
+                        height: 50px
+                    .inner_img
+                        position:relative
+
+                        width: 50px
+                        height: 50px
+
 
 .bg_player
     padding:300px
     width:840px
-    background: #000
+    height:230px
+    background:#000
 .control_bar
     .control_buttoms
 
@@ -404,6 +499,5 @@
 a 
     color: #FFA5A5
     text-decoration: none
-
 </style>
 

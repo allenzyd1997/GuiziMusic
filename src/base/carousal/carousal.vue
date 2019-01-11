@@ -80,7 +80,9 @@ export default {
         width: 196px
         height: 40px
         font-size: 34px
+
         strong 
+            color:#fff
             margin-left: 5px
 .category
     display: flex
@@ -88,6 +90,7 @@ export default {
     margin: 0 auto
     margin-top: 50px
     .category_type
+        color:#fff
         flex: 1
 .carousal-wrap
     width: 80%
