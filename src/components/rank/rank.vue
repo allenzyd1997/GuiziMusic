@@ -9,39 +9,16 @@
                     <dd class="toplist_nav__item">
                         <a href="" class="toplist_nav__link">巅峰榜流行指数</a>
                     </dd>
-                    <dd class="toplist_nav__item">
-                        <a href="" class="toplist_nav__link">巅峰榜流行指数</a>
-                    </dd>
-                    <dd class="toplist_nav__item">
-                        <a href="" class="toplist_nav__link">巅峰榜流行指数</a>
-                    </dd>
-                    <dd class="toplist_nav__item">
-                        <a href="" class="toplist_nav__link">巅峰榜流行指数</a>
-                    </dd>
-                    <dd class="toplist_nav__item">
-                        <a href="" class="toplist_nav__link">巅峰榜流行指数</a>
-                    </dd>
-                    <dd class="toplist_nav__item">
-                        <a href="" class="toplist_nav__link">巅峰榜流行指数</a>
-                    </dd>                                                                                                   
+                                                                                          
                 </dl>
                 <dl class="toplist_nav__list">
                     <dt class="toplist_nav__tit">全球榜</dt>
                     <dd class="toplist_nav__item">
-                        <a href="" class="toplist_nav__link">美国iTunes榜</a>
+                        <a href="" class="toplist_nav__link">iTunes榜</a>
                     </dd>                   
                     <dd class="toplist_nav__item">
-                        <a href="" class="toplist_nav__link">美国iTunes榜</a>
-                    </dd>   
-                    <dd class="toplist_nav__item">
-                        <a href="" class="toplist_nav__link">美国iTunes榜</a>
-                    </dd>   
-                    <dd class="toplist_nav__item">
-                        <a href="" class="toplist_nav__link">美国iTunes榜</a>
-                    </dd>   
-                    <dd class="toplist_nav__item">
-                        <a href="" class="toplist_nav__link">美国iTunes榜</a>
-                    </dd>                                                                                  
+                        <a href="" class="toplist_nav__link">Billboard榜</a>
+                    </dd>                                                                               
                 </dl>
             </div>  
             <div class="toplist">
@@ -91,19 +68,23 @@
 </template>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
+    .rank
+        background:#5f5f5f
     
 
     .main
+
         padding-top: 60px
         margin: 0 160px
         .toplist_nav
             float: left 
             border-width: 1px
             border-style: solid 
-            border-color: rgba(153, 153, 153, 2)
+            border-color: rgba(255, 106, 113, 2)
             .toplist_nav__list
                 margin-botton: 20px
                 .toplist_nav__tit
+                    color: rgba(255, 106, 113, 2)
                     line-height: 60px
                     font-weight: 400
                     border-bottom: 1px solid #ebebeb

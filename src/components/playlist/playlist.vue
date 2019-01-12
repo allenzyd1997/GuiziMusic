@@ -302,7 +302,8 @@ a{text-decoration:none}
 	}
 
 	.dropdown-content a:hover {
-		background-color: #FFA0CF;
+		background-color: #000;
+		color:#ffa0cf;
 	}
 
 .dropdown:hover .dropdown-content {

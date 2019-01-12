@@ -123,7 +123,6 @@ export default {
                 }
                 let result = {
                     rows: [],
-                    total: 1000
                 }
                 for (let i = 0; i < data.size; i++) {
                     let item = Mock.mock({
@@ -133,6 +132,30 @@ export default {
                         list_amount: Mock.Random.natural(0, 2000)
                     })
                     result.rows.push(item)
+                }
+                setTimeout(() => {
+                    resolve([200, result])
+                })
+            })
+        })
+
+        mock.onPost('/api/playSong/loadPage').reply(req => {
+            return new Promise((resolve, reject) => {
+                let data = req.data ? JSON.parse(req.data) : {
+                    size: 20
+                }
+                let result = {
+                    rows: [],
+                    total: 1000
+                }
+                for (let i = 0; i < data.size; i++) {
+                    let song = Mock.mock({
+                        song_name: Mock.Random.ctitle(3),
+                        singer: Mock.Random.cname(),
+                        duration: Mock.Random.time('mm:ss'),
+                        url: "../../../static/music/火箭少女101-Light.mp3",
+                    })
+                    result.rows.push(song)
                 }
                 setTimeout(() => {
                     resolve([200, result])

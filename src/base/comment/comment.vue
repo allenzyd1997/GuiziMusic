@@ -20,10 +20,10 @@
                         <img src="" alt="">
                     </a>
                     <h4 class="user_name">
-                        3424
+                        小红
                     </h4>
                     <p class="comment_text">
-                        ewqeweqwewqewe
+                        我最爱刘思源的声音
                     </p>
                     <div class="comment_opt">
                         <span class="comment_date">2017.1.8 10:25</span>
