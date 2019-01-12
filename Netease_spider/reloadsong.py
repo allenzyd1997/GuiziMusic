@@ -20,8 +20,8 @@ proxyHost = "b5.t.16yun.cn"
 proxyPort = "6460"
 
 # 代理隧道验证信息
-proxyUser = "16KKHDSD"
-proxyPass = "759940"
+proxyUser = "16GOFRKK"
+proxyPass = "844515"
 
 proxyMeta = "http://%(user)s:%(pass)s@%(host)s:%(port)s" % {
             "host" : proxyHost,

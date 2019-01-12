@@ -8,7 +8,7 @@ import types
 import pymysql
 import codecs
 import random
-
+'''
 # 代理服务器
 proxyHost = "b5.t.16yun.cn"
 proxyPort = "6460"
@@ -33,7 +33,7 @@ proxies = {
 
 #  设置IP切换头
 tunnel = random.randint(1,10000)
-headers = {"Proxy-Tunnel": str(tunnel)}
+headers = {"Proxy-Tunnel": str(tunnel)}'''
 
 
 #连接数据库
@@ -69,7 +69,7 @@ headers={'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/
 
 def data_get(url):
     try:
-        r=requests.get(url,proxies=proxies,headers=headers)
+        r=requests.get(url,headers=headers)
         r.encoding = "utf-8"
         if r.status_code == 200:
             return r.json()
@@ -106,6 +106,8 @@ for readcsv in read_csv():
         conn.commit()   # 提交，不然无法保存插入或者修改的数据(这个一定不要忘记加上)
     except:
         print("插入歌手信息失败，表中已有该歌手")
+    else:
+        print("                                                     上传成功")
 print("数据上传结束")
 cursor.close()  # 关闭游标
 conn.close()  # 关闭连接
