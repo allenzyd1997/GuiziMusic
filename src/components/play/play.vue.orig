@@ -22,29 +22,30 @@
                     <div class="mod_songlist_toolbar">
                         <el-button class="songlist_btn">添加</el-button>
                         <el-button class="songlist_btn">收藏到</el-button>
-                        <el-button class="songlist_btn">下载</el-button>
-                        <el-button class="songlist_btn">删除</el-button>
-                        <el-button class="songlist_btn">清空列表</el-button>
+                        <el-button class="songlist_btn" @click=downloadSong>下载</el-button>
+                        <el-button class="songlist_btn" @click="deleteSongs">删除</el-button>
+                        <el-button class="songlist_btn" @click="clearList">清空列表</el-button>
                     </div>
-                    <div class="table_list">
+                    <div class="mid_page"> 
+                        <div class="table_list">
                         <table>
                             <thead>
                                 <tr class = "title">
-                                    <th>
-                                        全选
+                                    <th class="first_title">
+                                        <div></div>
                                     </th>
                                     <th>
-                                        歌曲
+                                        <div>歌曲</div>
                                     </th>
                                     <th>
-                                        歌手
+                                        <div>歌手</div>
                                     </th>
                                     <th>
-                                        时长
+                                        <div>时长</div>
                                     </th>
                                 </tr>
                             </thead>
-                            <tr v-for = "(song, index) in tableData">
+                            <tr v-for = "(song, index) in tableData" class = "el">
                                 <th>
                                     <a href="javascript:;" v-show="song.selected" @click="selectSong(index)"><img src="../../common/image/select.png" class="outer_img"></a>
 
@@ -64,11 +65,15 @@
                             </tr>
                         </table>
                                             
+                    </div> 
                     </div>
+                    
                     <div class="mod_song_info">
                             <div class="song_info">
                                 <a class="song_info_cover" href="javascript:;">
-                                    <img src="../../common/image/3.jpg" class="song_info_pic">
+                                    <div class="show_cover">
+                                        <img src="../../common/image/10.jpg" class="song_info_pic">
+                                    </div>
                                 </a>
                                 <div class="song_info_name">
                                     歌曲名:
@@ -104,13 +109,13 @@
                     @timeupdate="onTimeupdate"
                     @loadedmetadata="onLoadedmetadata"
 
-                    src="../../../static/music/火箭少女101-Light.mp3"  
+                    :src="audio.song_url" 
                     >
                     </audio>
                     
                     <div class="control_buttoms">
 
-                            <a href="javascript:;"><img src="../../common/image/QUICK_BAK.png" class="qb_buttom"></a>
+                            <a href="javascript:;" @click="lastSong"><img src="../../common/image/QUICK_BAK.png" class="qb_buttom"></a>
 
 
                             <a href="javascript:;" v-show="show_play" @click="startPlayOrPause"><img src="../../common/image/PLAY.png" class="outer_img"></a>
@@ -120,11 +125,13 @@
 
 
 <<<<<<< HEAD
+                            <a href="javascript:;" @click="nextSong"><img src="../../common/image/QUICK_FOR.png" class="qf_buttom"></a>
+=======
             <el-slider v-model="volume" v-show="show_volume" :format-tooltip="formatVolumeToolTip" vertical:true @change="changeVolume" class="vol_slider"></el-slider>
             </div>
         </div>
-=======
                             <a href="javascript:;"><img src="../../common/image/QUICK_FOR.png" class="qf_buttom"></a>
+>>>>>>> 5ecd7add034e770c8c51cc07a0f02487c6fd1100
 
                     </div>
                     <div class="play_slider">
@@ -142,7 +149,6 @@
                     <el-slider v-model="volume" v-show="show_volume" :format-tooltip="formatVolumeToolTip"  @change="changeVolume" class="vol_slider"></el-slider>
                     </div>
                 </div>
->>>>>>> c696bfe157c36ec73151e340c1d52f03545ee32e
 
             </div>
         </div>
@@ -152,6 +158,12 @@
 
 <script type="text/ecmascript-6">
     import {mapGetters} from 'vuex'
+
+    import {playSongList} from '@/axios/api'
+
+    import Lyric from 'lyric-parser'
+
+
     function realFormatSecond(second){
         var secondType = typeof second 
 
@@ -183,44 +195,78 @@
                     currentTime: 0,
                     maxTime: 0,
                     sliderTime: 0,
+                    song_url: "", 
                     },
+
+
+                currentSongIndex: 0,
+
                 volume: 100,
                 show_play: true,
                 show_volume: true,
                 activetest:true,
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> c696bfe157c36ec73151e340c1d52f03545ee32e
+                size: 20,
+                total: 0,
+                filters:{},
+                
                 tableData: [{
-                    song_name: 'rocket girl',
-                    singer: '刘思源',
-                    duration: '03:12',
-                    selected: true
-                },{
-                    song_name: 'rocket girl',
-                    singer: '杨超越',
-                    duration: '03:12',
-                    selected: false
-                },{
-                    song_name: 'rocket girl',
-                    singer: '刘思源',
-                    duration: '03:12',
-                    selected: false
-                },{
-                    song_name: 'rocket girl',
-                    singer: '杨超越',
-                    duration: '03:12',
-                    selected: false
-                },{
-                    song_name: 'rocket girl',
-                    singer: '魏志恒',
-                    duration: '03:12',
-                    selected: false
-                },
+                    song_name: "Light",
+                    singer:"火箭少女刘思源",
+                    duration:"03:30",
+                    selected:false,
+                    url:"http://m10.music.126.net/20190112144717/6dbf3077fed21704de0015132b370ad9/ymusic/9581/b80c/ec1e/35db1b25288729ed8cd41202ba4b98bd.mp3"
+                    },{
+                    song_name: "时间是金",
+                    singer:"rap歌手刘思源",
+                    duration:"03:20",
+                    selected:false,
+                    url:"http://m10.music.126.net/20190112144717/6dbf3077fed21704de0015132b370ad9/ymusic/9581/b80c/ec1e/35db1b25288729ed8cd41202ba4b98bd.mp3"
+                    },{
+                    song_name: "月亮警察",
+                    singer:"火箭少女刘思源",
+                    duration:"03:10",
+                    selected:false,
+                    url:"../../../static/music/火箭少女101-月亮警察.mp3"
+                    },{
+                    song_name: "Light",
+                    singer:"火箭少女刘思源",
+                    duration:"03:30",
+                    selected:false,
+                    url:"../../../static/music/火箭少女101-Light.mp3"
+                    },{
+                    song_name: "时间是金",
+                    singer:"rap歌手刘思源",
+                    duration:"03:20",
+                    selected:false,
+                    url:"../../../static/music/王以太-时间是金 (Live).mp3"
+                    },{
+                    song_name: "月亮警察",
+                    singer:"火箭少女刘思源",
+                    duration:"03:10",
+                    selected:false,
+                    url:"../../../static/music/火箭少女101-月亮警察.mp3"
+                    },{
+                    song_name: "Light",
+                    singer:"火箭少女刘思源",
+                    duration:"03:30",
+                    selected:false,
+                    url:"../../../static/music/火箭少女101-Light.mp3"
+                    },{
+                    song_name: "时间是金",
+                    singer:"rap歌手刘思源",
+                    duration:"03:20",
+                    selected:false,
+                    url:"../../../static/music/王以太-时间是金 (Live).mp3"
+                    },{
+                    song_name: "月亮警察",
+                    singer:"火箭少女刘思源",
+                    duration:"03:10",
+                    selected:false,
+                    url:"../../../static/music/火箭少女101-月亮警察.mp3"
+                    },
                 ],
+
 
                 selectedTable:[],
             }
@@ -235,7 +281,9 @@
             'fullScreen',
             'playlist'
             ])
-<<<<<<< HEAD
+        },
+        mounted: function(){
+            this.getSongs()
         },
         methods:{
         startPlayOrPause(){
@@ -279,11 +327,13 @@
           //console.log(res)
           this.audio.currentTime = res.target.currentTime
           this.sliderTime = parseInt(this.audio.currentTime / this.audio.maxTime * 100)
-=======
->>>>>>> c696bfe157c36ec73151e340c1d52f03545ee32e
         },
         methods:{
             startPlayOrPause(){
+                if (this.audio.song_url == ""){
+                    this.loadSong()
+                }
+
                 return this.audio.playing? this.pause() : this.play()
             },
             play(){
@@ -315,15 +365,15 @@
                 this.audio.maxTime = parseInt(res.target.duration)
             },
             // 拖动进度条，改变当前时间，index是进度条改变时的回调函数的参数0-100之间，需要换算成实际时间
-            changeCurrentTime(index){
-              this.$refs.audio.currentTime = parseInt(index)
+            changeCurrentTime(index = 0){
+                this.$refs.audio.currentTime = parseInt(index)
             },
             // 当音频当前时间改变后，进度条也要改变
             onTimeupdate(res) {
               //console.log('timeupdate')
               //console.log(res)
               this.audio.currentTime = res.target.currentTime
-              this.sliderTime = parseInt(this.audio.currentTime / this.audio.maxTime * 100)
+              this.audio.sliderTime = parseInt(this.audio.currentTime / this.audio.maxTime * 100)
             },
 
             // 进度条格式化toolTip
@@ -342,9 +392,43 @@
             },
 
 
+            // 加入歌单到当前list
+            getSongs(){
+                if (this.pageLoading)
+                    return 
+                this.pageLoading = true
+                let params = {
+                    size: this.size,
+                    query: this.filters.query
+                }
+                
+                playSongList(params).then(res=>{
+                
+                this.pageLoading = false
 
+                if (!res.data || !res.data.rows)
+                        return
+                this.total = res.data.total
+                res.data.rows.forEach(element=>{
+                let key = "selected";
+                let value = false;
+
+                element[key] = value;
+
+                })
+
+                this.tableData = res.data.rows;
+
+
+
+                }).catch(err => {
+                    console.log(err);
+                })
+            },   
 
             //这里开始业务控制功能Jan.11
+
+            // 选择歌曲， 选择的歌曲将加入selectedTable中
             selectSong(index){
                 //将Vue tableData中的键值进行改变，主要是改前面的选中动画
                 let origin_el = this.tableData[index];
@@ -356,18 +440,57 @@
                 this.$set(this.tableData,index,this.tableData[index]);
 
                 //将选中的歌加入selectedTable，取消选中的移出此数组
-                if (origin_el.selected == false){
+
+                if (origin_el.selected == true){
+                    console.log("this is add song")
                     this.selectedTable.push(this.tableData[index]);
                 }
                 else{
+                    console.log("remove song")
                     let found_index = this.selectedTable.indexOf(origin_el);
                     this.selectedTable.splice(found_index, 1);
                 }
-                console.log("111")
-                console.log(this.selectedTable.join("|"));
-                console.log("222")
-
             },
+            // 删除所选歌曲
+            deleteSongs(){
+                this.tableData.forEach(e => {
+                    if(e.selected == true){
+                        this.tableData.splice(this.tableData.indexOf(e), 1);
+                    }
+                });
+            },
+
+            // 清空列表
+            clearList(){
+                this.tableData = [];
+            },
+
+            lastSong(){
+                if(this.currentSongIndex != 0){
+                    this.currentSongIndex = this.currentSongIndex - 1  
+                }
+                this.loadSong()
+            },
+            nextSong(){
+                if(this.currentSongIndex != this.tableData.length){
+                    this.currentSongIndex = this.currentSongIndex + 1
+
+                }
+                else{
+                    this.currentSongIndex = 0
+                }
+                this.loadSong()
+            },
+            loadSong(){
+                this.audio.song_url = this.tableData[this.currentSongIndex].url
+                this.audio.playing = false 
+                this.currentTime = 0 
+                this.sliderTime = 0
+                this.show_play = true
+            },
+            discRotate(){
+
+            }
         },
 
         filters:{
@@ -376,8 +499,9 @@
             },
             formatSecond(second = 0){
             return realFormatSecond(second)
+            }
         }
-        }
+    }
     }
 </script>
 
@@ -385,7 +509,6 @@
     @import "~common/stylus/variable"
     @import "~common/stylus/mixin"
     .player
-
         .player_logo_pic
             width:80px
             height:80px
@@ -421,11 +544,22 @@
                 width: 100%
                 cursor: default
                 .player_style_normal
+                    
                     display: block
+                    background: #3c3c3c
                     .mod_songlist_toolbar
                         position: relative
+                        
+                        left:-480px
                         top:10px
                         margin-bottom: 20px
+                        .el-button
+                            padding: 5px 10px;
+                            color: #ffa5a5
+                            background: #3c3c3c
+                        .el-button:hover
+                            color:#fff
+                            
                     .sb_main
                         position: relative
                     .mod_song_info
@@ -437,55 +571,82 @@
                         font-size: 14px
                         line-height: 24px
                         .song_info
-                            
+                            color:#fff
                             .song_info_cover
                                 position: relative
                                 display: block
-                                width: 186px
-                                height: 186px
-                                margin: auto
-                                .song_info_pic
-                                    top:10px
-                                    vertical-align: middle
-                                    width: 186px
-                                    height: 186px
+                                width: 250px
+                                height: 250px
+                                margin: 40px
 
+                                .show_cover
+                                    border-radius:125px;
+                                    overflow: hidden;
+                                    
+                                    .song_info_pic
+                                        vertical-align: middle;
+                                        width: 250px;
+                                        height: 250px;
+                                        @keyframes rotate{
+                                        from{-webkit-transform:rotate(0deg)}
+                                        to{-webkit-transform:rotate(360deg)}
+                                        }
+                                        animation: 9.5s linear 0s normal none infinite rotate;
+
+                                        
+
+                            .song_info_name
+                                top:30px
     
+.mid_page
+    
+    width:800px;
+    height:520px;
+    background: #3c3c3c
+    .table_list
+        width:800px;
+        height:460px;
+        
+        overflow-y:scroll;  /*纵向滚动条始终显示 */
+        overflow-x:none;
+        table
+            border-collapse:collapse
 
-.table_list
-    width:1000px;
-    height:450px;
-    background: #fff0f0
-    overflow-y:scroll;  /*纵向滚动条始终显示 */
-    overflow-x:none;
-    table
-        border: 0px
-        width:984px;   /*表格宽度＝div宽度(500px)－滚动条宽度(16px) */
-        thead
-            tr
+            border: 0px
+            width:784px;   /*表格宽度＝div宽度(500px)－滚动条宽度(16px) */
+            top:50px
+            thead
+                tr
 
-                POSITION: relative;  TOP:0px;  /*绝对定位 */
-                height:30px
-                background:#cccccc;
-            
-                
-            .title
-                color:#FFA5A5
-        tr
-            height:100px
-            th
-                a
-                    .outer_img
-                        
-                        position:relative
+                    POSITION: relative;  /*绝对定位 */
+                    height:30px
+                    background:#000;
 
-                        width: 50px
-                        height: 50px
-                    .inner_img
-                        position:relative
+                    th
+                        background: #3c3c3c
+                        div
+                            color: #ffdc51
 
-                        width: 50px
-                        height: 50px
+            .el
+                height:60px
+                th
+                    color: #fff
+                    font-size:13px
+                    background: #000
+                    a
+                        .outer_img
+                            
+                            position:relative
+                            width: 50px
+                            height: 50px
+                        .inner_img
+                            position:relative
+
+                            width: 50px
+                            height: 50px
+            .el:hover
+                th
+                    background: #ffb4b8
 
 
 .bg_player
@@ -546,21 +707,15 @@
             position:absolute
             left:700px
             .volume_img
-                
-<<<<<<< HEAD
-=======
                 width:40px
                 height:40px
-                
->>>>>>> c696bfe157c36ec73151e340c1d52f03545ee32e
+
+
 
 
 a 
     color: #FFA5A5
     text-decoration: none
-<<<<<<< HEAD
 
-=======
->>>>>>> c696bfe157c36ec73151e340c1d52f03545ee32e
 </style>
 

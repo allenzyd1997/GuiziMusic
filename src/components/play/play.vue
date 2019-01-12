@@ -122,11 +122,8 @@
                             <div class="inner_div">
                                 <a href="javascript:;" v-show="!show_play" @click="startPlayOrPause"><img src="../../common/image/STOP.png" class="inner_img"></a>
                             </div>
+
                             <a href="javascript:;" @click="nextSong"><img src="../../common/image/QUICK_FOR.png" class="qf_buttom"></a>
-            <el-slider v-model="volume" v-show="show_volume" :format-tooltip="formatVolumeToolTip" vertical:true @change="changeVolume" class="vol_slider"></el-slider>
-            </div>
-        </div>
-                            <a href="javascript:;"><img src="../../common/image/QUICK_FOR.png" class="qf_buttom"></a>
 
                     </div>
                     <div class="play_slider">
@@ -281,54 +278,7 @@
             this.getSongs()
         },
         methods:{
-        startPlayOrPause(){
-            return this.audio.playing? this.pause() : this.play()
-        },
-        play(){
-            this.$refs.audio.play()
-        },
-        pause(){
-            this.$refs.audio.pause()
-        },
-        onPlay(){
-            this.audio.playing=true
-            this.show_play = false
-        },
-        onPause(){
-            this.audio.playing=false
-            this.show_play = true
-        },
-        showVolume(){
-            this.show_volume = !this.show_volume
-        },
-        volumeShow(){
-            this.show_volume = true
-        },
-        volumeHide(){
-            this.show_volume = false
-        },
-        onLoadedmetadata(res){
-            console.log('loadedmetadata')
-            console.log(res)
-            this.audio.maxTime = parseInt(res.target.duration)
-        },
-        // 拖动进度条，改变当前时间，index是进度条改变时的回调函数的参数0-100之间，需要换算成实际时间
-        changeCurrentTime(index){
-          this.$refs.audio.currentTime = parseInt(index)
-        },
-        // 当音频当前时间改变后，进度条也要改变
-        onTimeupdate(res) {
-          //console.log('timeupdate')
-          //console.log(res)
-          this.audio.currentTime = res.target.currentTime
-          this.sliderTime = parseInt(this.audio.currentTime / this.audio.maxTime * 100)
-        },
-        methods:{
             startPlayOrPause(){
-                if (this.audio.song_url == ""){
-                    this.loadSong()
-                }
-
                 return this.audio.playing? this.pause() : this.play()
             },
             play(){
@@ -360,15 +310,15 @@
                 this.audio.maxTime = parseInt(res.target.duration)
             },
             // 拖动进度条，改变当前时间，index是进度条改变时的回调函数的参数0-100之间，需要换算成实际时间
-            changeCurrentTime(index = 0){
-                this.$refs.audio.currentTime = parseInt(index)
+            changeCurrentTime(index){
+              this.$refs.audio.currentTime = parseInt(index)
             },
             // 当音频当前时间改变后，进度条也要改变
             onTimeupdate(res) {
               //console.log('timeupdate')
               //console.log(res)
               this.audio.currentTime = res.target.currentTime
-              this.audio.sliderTime = parseInt(this.audio.currentTime / this.audio.maxTime * 100)
+              this.sliderTime = parseInt(this.audio.currentTime / this.audio.maxTime * 100)
             },
 
             // 进度条格式化toolTip
@@ -437,11 +387,11 @@
                 //将选中的歌加入selectedTable，取消选中的移出此数组
 
                 if (origin_el.selected == true){
-                   
+                    console.log("this is add song")
                     this.selectedTable.push(this.tableData[index]);
                 }
                 else{
-                    
+                    console.log("remove song")
                     let found_index = this.selectedTable.indexOf(origin_el);
                     this.selectedTable.splice(found_index, 1);
                 }
@@ -483,9 +433,6 @@
                 this.sliderTime = 0
                 this.show_play = true
             },
-            discRotate(){
-
-            }
         },
 
         filters:{
@@ -495,8 +442,7 @@
             formatSecond(second = 0){
             return realFormatSecond(second)
             }
-        }
-    }
+        },
     }
 </script>
 
@@ -541,7 +487,7 @@
                 .player_style_normal
                     
                     display: block
-                    background: #3c3c3c
+                    background: rgba(255,240,110,1)
                     .mod_songlist_toolbar
                         position: relative
                         
@@ -551,7 +497,7 @@
                         .el-button
                             padding: 5px 10px;
                             color: #ffa5a5
-                            background: #3c3c3c
+                            background: rgba(255,240,110,1)
                         .el-button:hover
                             color:#fff
                             
@@ -559,8 +505,8 @@
                         position: relative
                     .mod_song_info
                         position: absolute
-                        top: 100px
-                        right: 40px
+                        top: 30px
+                        right: 100px
                         height: 100%
                         text-align: center
                         font-size: 14px
@@ -597,7 +543,7 @@
     
     width:800px;
     height:520px;
-    background: #3c3c3c
+    background: rgba(255,240,110,1)
     .table_list
         width:800px;
         height:460px;
@@ -615,19 +561,18 @@
 
                     POSITION: relative;  /*绝对定位 */
                     height:30px
-                    background:#000;
 
                     th
-                        background: #3c3c3c
+                        background: rgba(255,240,110,1)
                         div
-                            color: #ffdc51
+                            color: #000
 
             .el
                 height:60px
                 th
-                    color: #fff
+                    color: rgba(255,127,133,1)
                     font-size:13px
-                    background: #000
+                    background: rgba(0,0,0,0.1)
                     a
                         .outer_img
                             
@@ -641,7 +586,8 @@
                             height: 50px
             .el:hover
                 th
-                    background: #ffb4b8
+                    background: rgba(255,127,133,1)
+                    color: #fff
 
 
 .bg_player
