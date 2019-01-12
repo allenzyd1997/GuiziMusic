@@ -12,8 +12,14 @@ GuiziMusic音乐平台子系统——爬虫部分
 
 环境要求
 ---
-python3.x  使用的库主要有requests,csv,pandas,json,pymysql,codecs,安装比较麻烦的有pycrypto(可用pycryptodome代替)
+
+python3.x
+
+使用的库主要有requests,csv,pandas,json,pymysql,codecs,安装比较麻烦的有pycrypto(可用pycryptodome代替)
 MySQL数据库
+
+
+
 文件功能说明
 ---
 + **16yun.py**        
@@ -54,6 +60,8 @@ MySQL数据库
 >*将数据库信息导入csv文件用的工具，便于多进程时使用*
 + **userdump.py**
 >*十万阴兵的账号密码2333，拿来模拟用户用的*
+
+
 
 贡献者
 ---
