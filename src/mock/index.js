@@ -63,7 +63,7 @@ export default {
 
         mock.onPost('/api/albuminfo/loadPage').reply(req => {
             return new Promise((resolve, reject) => {
-                console.log(req.data)
+                
                 let data = req.data ? JSON.parse(req.data) : {
                     size: 20
                 }
@@ -85,6 +85,35 @@ export default {
                 })
             })
         })
+
+        //加载歌手页面
+        mock.onPost('/api/artistinfo/loadPage').reply(req => {
+            return new Promise((resolve, reject) => {
+                let result = {
+                    rec_rows: [],
+                    rows: []
+                }
+                for (let i = 0; i < 10; i++) {
+                    let item = Mock.mock({
+                        image: Mock.Random.image('140x140', '#ffcc33', '#FFF', 'jpg'),
+                        artist_name: Mock.Random.cname(),
+                    })
+                    result.rec_rows.push(item)
+                }     
+                for (let i = 0; i < 50; i++) {
+                    let item = Mock.mock({
+                        artist_name: Mock.Random.cname(),
+                    })
+                    result.rows.push(item)                    
+                }
+                setTimeout(() => {
+                    resolve([200, result])
+                })           
+            })
+        })
+
+        //搜索框搜索
+        
 
         mock.onPost('/api/listinfo/loadPage').reply(req => {
             return new Promise((resolve, reject) => {

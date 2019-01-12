@@ -122,9 +122,11 @@
                             <div class="inner_div">
                                 <a href="javascript:;" v-show="!show_play" @click="startPlayOrPause"><img src="../../common/image/STOP.png" class="inner_img"></a>
                             </div>
-
-
                             <a href="javascript:;" @click="nextSong"><img src="../../common/image/QUICK_FOR.png" class="qf_buttom"></a>
+            <el-slider v-model="volume" v-show="show_volume" :format-tooltip="formatVolumeToolTip" vertical:true @change="changeVolume" class="vol_slider"></el-slider>
+            </div>
+        </div>
+                            <a href="javascript:;"><img src="../../common/image/QUICK_FOR.png" class="qf_buttom"></a>
 
                     </div>
                     <div class="play_slider">
@@ -279,6 +281,49 @@
             this.getSongs()
         },
         methods:{
+        startPlayOrPause(){
+            return this.audio.playing? this.pause() : this.play()
+        },
+        play(){
+            this.$refs.audio.play()
+        },
+        pause(){
+            this.$refs.audio.pause()
+        },
+        onPlay(){
+            this.audio.playing=true
+            this.show_play = false
+        },
+        onPause(){
+            this.audio.playing=false
+            this.show_play = true
+        },
+        showVolume(){
+            this.show_volume = !this.show_volume
+        },
+        volumeShow(){
+            this.show_volume = true
+        },
+        volumeHide(){
+            this.show_volume = false
+        },
+        onLoadedmetadata(res){
+            console.log('loadedmetadata')
+            console.log(res)
+            this.audio.maxTime = parseInt(res.target.duration)
+        },
+        // 拖动进度条，改变当前时间，index是进度条改变时的回调函数的参数0-100之间，需要换算成实际时间
+        changeCurrentTime(index){
+          this.$refs.audio.currentTime = parseInt(index)
+        },
+        // 当音频当前时间改变后，进度条也要改变
+        onTimeupdate(res) {
+          //console.log('timeupdate')
+          //console.log(res)
+          this.audio.currentTime = res.target.currentTime
+          this.sliderTime = parseInt(this.audio.currentTime / this.audio.maxTime * 100)
+        },
+        methods:{
             startPlayOrPause(){
                 if (this.audio.song_url == ""){
                     this.loadSong()
@@ -392,11 +437,11 @@
                 //将选中的歌加入selectedTable，取消选中的移出此数组
 
                 if (origin_el.selected == true){
-                    console.log("this is add song")
+                   
                     this.selectedTable.push(this.tableData[index]);
                 }
                 else{
-                    console.log("remove song")
+                    
                     let found_index = this.selectedTable.indexOf(origin_el);
                     this.selectedTable.splice(found_index, 1);
                 }
@@ -449,8 +494,9 @@
             },
             formatSecond(second = 0){
             return realFormatSecond(second)
+            }
         }
-        }
+    }
     }
 </script>
 
@@ -458,7 +504,6 @@
     @import "~common/stylus/variable"
     @import "~common/stylus/mixin"
     .player
-
         .player_logo_pic
             width:80px
             height:80px
@@ -657,15 +702,15 @@
             position:absolute
             left:700px
             .volume_img
-                
                 width:40px
                 height:40px
-                
+
 
 
 
 a 
     color: #FFA5A5
     text-decoration: none
+
 </style>
 

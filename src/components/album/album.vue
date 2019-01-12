@@ -72,79 +72,67 @@
 								</div>
 							</div>
 						</li>
-
-						<!-- <li class="one_album_el">
-							<div class="one_album">
-								<a href="javascript:;">
-									<div class="outer_cover">
-										<img src="../../common/image/2.jpg">
-										<div class="inner_cover">
-											<img src="../../common/image/play_op.png" class="inner_img">
-										</div>
-									</div>
-								</a>
-								<div class="album_intro">
-									<a href="javascript:;" class="album_name_link"><p class="album_name">album name</p></a>
-									<a href="javascript:;" class="artist_name_link"><p class="artist_name">artist name</p></a>
-									<p class="publish_time">publish time</p>
-								</div>
-							</div>
-						</li>
-
-						<li class="one_album_el">
-							<div class="one_album">
-								<a href="javascript:;">
-									<div class="outer_cover">
-										<img src="../../common/image/3.jpg">
-										<div class="inner_cover">
-											<img src="../../common/image/play_op.png" class="inner_img">
-										</div>
-									</div>
-								</a>
-								<div class="album_intro">
-									<a href="javascript:;" class="album_name_link"><p class="album_name">album name</p></a>
-									<a href="javascript:;" class="artist_name_link"><p class="artist_name">artist name</p></a>
-									<p class="publish_time">publish time</p>
-								</div>
-							</div>
-						</li>
-
-						<li class="one_album_el">
-							<div class="one_album">
-								<a href="javascript:;">
-									<div class="outer_cover">
-										<img src="../../common/image/4.jpg">
-										<div class="inner_cover">
-											<img src="../../common/image/play_op.png" class="inner_img">
-										</div>
-									</div>
-								</a>
-								<div class="album_intro">
-									<a href="javascript:;" class="album_name_link"><p class="album_name">album name</p></a>
-									<a href="javascript:;" class="artist_name_link"><p class="artist_name">artist name</p></a>
-									<p class="publish_time">publish time</p>
-								</div>
-							</div>
-						</li>
-
-						<li class="one_album_el">
-							<div class="one_album">
-								<a href="javascript:;">
-									<div class="outer_cover">
-										<img src="../../common/image/5.jpg">
-										<div class="inner_cover">
-											<img src="../../common/image/play_op.png" class="inner_img">
-										</div>
-									</div>
-								</a>
-								<div class="album_intro">
-									<a href="javascript:;" class="album_name_link"><p class="album_name">album name</p></a>
-									<a href="javascript:;" class="artist_name_link"><p class="artist_name">artist name</p></a>
-									<p class="publish_time">publish time</p>
-								</div>
-							</div>
-						</li> -->
 					</ul>
+
+					<ul class="all_albums">
+						<li class="one_album_el" v-for="item in row2">
+							<div class="one_album">
+								<a href="javascript:;">
+									<div class="outer_cover">
+										<img v-bind:src="item.image">
+										<div class="inner_cover">
+											<img src="../../common/image/play_op.png" class="inner_img">
+										</div>
+									</div>
+								</a>
+								<div class="album_intro">
+									<a href="javascript:;" class="album_name_link"><p class="album_name">{{item.album_name}}</p></a>
+									<a href="javascript:;" class="artist_name_link"><p class="artist_name">{{item.artist_name}}</p></a>
+									<p class="publish_time">{{item.publish_time}}</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+
+					<ul class="all_albums">
+						<li class="one_album_el" v-for="item in row3">
+							<div class="one_album">
+								<a href="javascript:;">
+									<div class="outer_cover">
+										<img v-bind:src="item.image">
+										<div class="inner_cover">
+											<img src="../../common/image/play_op.png" class="inner_img">
+										</div>
+									</div>
+								</a>
+								<div class="album_intro">
+									<a href="javascript:;" class="album_name_link"><p class="album_name">{{item.album_name}}</p></a>
+									<a href="javascript:;" class="artist_name_link"><p class="artist_name">{{item.artist_name}}</p></a>
+									<p class="publish_time">{{item.publish_time}}</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+
+					<ul class="all_albums">
+						<li class="one_album_el" v-for="item in row4">
+							<div class="one_album">
+								<a href="javascript:;">
+									<div class="outer_cover">
+										<img v-bind:src="item.image">
+										<div class="inner_cover">
+											<img src="../../common/image/play_op.png" class="inner_img">
+										</div>
+									</div>
+								</a>
+								<div class="album_intro">
+									<a href="javascript:;" class="album_name_link"><p class="album_name">{{item.album_name}}</p></a>
+									<a href="javascript:;" class="artist_name_link"><p class="artist_name">{{item.artist_name}}</p></a>
+									<p class="publish_time">{{item.publish_time}}</p>
+								</div>
+							</div>
+						</li>
+					</ul>															
                 </div>
     			
     			<!-- <div id="album_foot" class="album_foot">
@@ -201,8 +189,6 @@ import {listAlbum} from '@/axios/api'
 				
 				listAlbum(params).then(res => {
 					this.pageLoading = false
-					console.log('222')
-					console.log(res.data.rows)
 					if (!res.data || !res.data.rows)
 						return 
 					this.total = res.data.total
