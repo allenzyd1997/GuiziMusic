@@ -34,25 +34,7 @@ const router = new Router({
         },
         {
           path: '/profile/like',
-          component: () => import('@/components/profile/like.vue'),
-          children: [
-            {
-              path: '/',
-              redirect: '/profile/like/song'
-            },
-            {
-              path: '/profile/like/song',
-              component: () => import('@/components/profile/like/song')
-            },
-            {
-              path: '/profile/like/songlist',
-              component: () => import('@/components/profile/like/songlist')
-            },
-            {
-              path: '/profile/like/album',
-              component: () => import('@/components/profile/like/album')
-            }
-          ]
+          component: () => import('@/components/profile/like.vue')
         },
         {
           path: '/profile/create',
@@ -66,10 +48,7 @@ const router = new Router({
           path: '/profile/fans',
           component: () => import('@/components/profile/fans.vue')
         },
-        {
-          path: '/profile/focus',
-          component: () => import('@/components/profile/focus.vue')
-        }
+
       ]
     },
     {

@@ -68,8 +68,8 @@
 										</div>
 									</a>
 									<div class="album_intro">
-										<a href="javascript:;" class="album_name_link"><p class="album_name">歌单： {{item.songlist_name}}</p></a>
-										<a href="javascript:;" class="artist_name_link"><p class="artist_name">创建者： {{item.user_id}}</p></a>
+										<a href="javascript:;" class="album_name_link"><p class="album_name">歌单： {{item.list_name}}</p></a>
+										<a href="javascript:;" class="artist_name_link"><p class="artist_name">创建者： {{item.list_creater}}</p></a>
 										<p class="publish_time">播放量：{{item.list_amount}}</p>
 									</div>
 								</div>
@@ -87,8 +87,8 @@
 										</div>
 									</a>
 									<div class="album_intro">
-										<a href="javascript:;" class="album_name_link"><p class="album_name">歌单： {{item.songlist_name}}</p></a>
-										<a href="javascript:;" class="artist_name_link"><p class="artist_name">创建者： {{item.user_id}}</p></a>
+										<a href="javascript:;" class="album_name_link"><p class="album_name">歌单： {{item.list_name}}</p></a>
+										<a href="javascript:;" class="artist_name_link"><p class="artist_name">创建者： {{item.list_creater}}</p></a>
 										<p class="publish_time">播放量：{{item.list_amount}}</p>
 									</div>
 								</div>
@@ -106,8 +106,8 @@
 										</div>
 									</a>
 									<div class="album_intro">
-										<a href="javascript:;" class="album_name_link"><p class="album_name">歌单： {{item.songlist_name}}</p></a>
-										<a href="javascript:;" class="artist_name_link"><p class="artist_name">创建者： {{item.user_id}}</p></a>
+										<a href="javascript:;" class="album_name_link"><p class="album_name">歌单： {{item.list_name}}</p></a>
+										<a href="javascript:;" class="artist_name_link"><p class="artist_name">创建者： {{item.list_creater}}</p></a>
 										<p class="publish_time">播放量：{{item.list_amount}}</p>
 									</div>
 								</div>
@@ -125,8 +125,8 @@
 										</div>
 									</a>
 									<div class="album_intro">
-										<a href="javascript:;" class="album_name_link"><p class="album_name">歌单： {{item.songlist_name}}</p></a>
-										<a href="javascript:;" class="artist_name_link"><p class="artist_name">创建者： {{item.user_id}}</p></a>
+										<a href="javascript:;" class="album_name_link"><p class="album_name">歌单： {{item.list_name}}</p></a>
+										<a href="javascript:;" class="artist_name_link"><p class="artist_name">创建者： {{item.list_creater}}</p></a>
 										<p class="publish_time">播放量：{{item.list_amount}}</p>
 									</div>
 								</div>

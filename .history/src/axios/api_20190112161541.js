@@ -35,22 +35,16 @@ export const listSinger = params => {
     return axios.get('/api/artistinfo/findsingerall_page?currentPage='+params.currentPage+'&pageSize='+params.pageSize)
 }
 
-//歌单
 export const listSongList = params => {
-    if (params.songlist_label != '') {
-        return axios.get('/api/songlist/findbysonglist_label_page?currentPage='+params.currentPage+'&pageSize='+params.pageSize+'&songlist_label='+params.songlist_label)
-    } else {
-        return axios.get('/api/songlist/findbysonglist_label_page?currentPage='+params.currentPage+'&pageSize='+params.pageSize+'&songlist_label')
-    }
+	return axios.post('/api/listinfo/loadPage')
 
 }
 
 export const playSongList = params => {
-
+    
 }
 
 //首字母查询
 export const listSingerByFirstName = params => {
     return axios.get('/api/artistinfo/firsthanzicode?firsthanzicode='+params.character)
 }
-

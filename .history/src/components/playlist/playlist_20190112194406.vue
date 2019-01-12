@@ -61,15 +61,15 @@
 								<div class="one_album">
 									<a href="/#/play">
 										<div class="outer_cover">
-											<img :src="item.imgUrl">
+											<img :src="item.image">
 											<div class="inner_cover">
 												<img src="../../common/image/play_op.png" class="inner_img">
 											</div>
 										</div>
 									</a>
 									<div class="album_intro">
-										<a href="javascript:;" class="album_name_link"><p class="album_name">歌单： {{item.songlist_name}}</p></a>
-										<a href="javascript:;" class="artist_name_link"><p class="artist_name">创建者： {{item.user_id}}</p></a>
+										<a href="javascript:;" class="album_name_link"><p class="album_name">歌单： {{item.list_name}}</p></a>
+										<a href="javascript:;" class="artist_name_link"><p class="artist_name">创建者： {{item.list_creater}}</p></a>
 										<p class="publish_time">播放量：{{item.list_amount}}</p>
 									</div>
 								</div>
@@ -80,15 +80,15 @@
 								<div class="one_album">
 									<a href="/#/play">
 										<div class="outer_cover">
-											<img :src="item.imgUrl">
+											<img :src="item.image">
 											<div class="inner_cover">
 												<img src="../../common/image/play_op.png" class="inner_img">
 											</div>
 										</div>
 									</a>
 									<div class="album_intro">
-										<a href="javascript:;" class="album_name_link"><p class="album_name">歌单： {{item.songlist_name}}</p></a>
-										<a href="javascript:;" class="artist_name_link"><p class="artist_name">创建者： {{item.user_id}}</p></a>
+										<a href="javascript:;" class="album_name_link"><p class="album_name">歌单： {{item.list_name}}</p></a>
+										<a href="javascript:;" class="artist_name_link"><p class="artist_name">创建者： {{item.list_creater}}</p></a>
 										<p class="publish_time">播放量：{{item.list_amount}}</p>
 									</div>
 								</div>
@@ -99,15 +99,15 @@
 								<div class="one_album">
 									<a href="/#/play">
 										<div class="outer_cover">
-											<img :src="item.imgUrl">
+											<img :src="item.image">
 											<div class="inner_cover">
 												<img src="../../common/image/play_op.png" class="inner_img">
 											</div>
 										</div>
 									</a>
 									<div class="album_intro">
-										<a href="javascript:;" class="album_name_link"><p class="album_name">歌单： {{item.songlist_name}}</p></a>
-										<a href="javascript:;" class="artist_name_link"><p class="artist_name">创建者： {{item.user_id}}</p></a>
+										<a href="javascript:;" class="album_name_link"><p class="album_name">歌单： {{item.list_name}}</p></a>
+										<a href="javascript:;" class="artist_name_link"><p class="artist_name">创建者： {{item.list_creater}}</p></a>
 										<p class="publish_time">播放量：{{item.list_amount}}</p>
 									</div>
 								</div>
@@ -118,15 +118,15 @@
 								<div class="one_album">
 									<a href="/#/play">
 										<div class="outer_cover">
-											<img :src="item.imgUrl">
+											<img :src="item.image">
 											<div class="inner_cover">
 												<img src="../../common/image/play_op.png" class="inner_img">
 											</div>
 										</div>
 									</a>
 									<div class="album_intro">
-										<a href="javascript:;" class="album_name_link"><p class="album_name">歌单： {{item.songlist_name}}</p></a>
-										<a href="javascript:;" class="artist_name_link"><p class="artist_name">创建者： {{item.user_id}}</p></a>
+										<a href="javascript:;" class="album_name_link"><p class="album_name">歌单： {{item.list_name}}</p></a>
+										<a href="javascript:;" class="artist_name_link"><p class="artist_name">创建者： {{item.list_creater}}</p></a>
 										<p class="publish_time">播放量：{{item.list_amount}}</p>
 									</div>
 								</div>
@@ -164,7 +164,6 @@
 			row2:[],
 			row3:[],
 			row4:[],
-			label:'',
 			pageLoading:false,
 		}
 	},
@@ -185,14 +184,15 @@
 				listSongList(params).then(res => {
 					this.pageLoading = false
 					console.log('222')
-					console.log(res.data)
-					if (!res.data)
+					console.log(res.data.rows)
+					if (!res.data || !res.data.rows)
 						return 
+					this.total = res.data.total
 					this.page++
-					this.row1 = res.data.slice(0, 5)
-					this.row2 = res.data.slice(5, 10)
-					this.row3 = res.data.slice(10, 15)
-					this.row4 = res.data.slice(15, 20)
+					this.row1 = res.data.rows.slice(0, 5)
+					this.row2 = res.data.rows.slice(5, 10)
+					this.row3 = res.data.rows.slice(10, 15)
+					this.row4 = res.data.rows.slice(15, 20)
 					
 				}).catch(err => {
                 	console.log(err)

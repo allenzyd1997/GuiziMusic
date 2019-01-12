@@ -26,13 +26,13 @@
         </div>
         <div class="main_profile" v-if="hasUser">
             <div class="mod_tab profile_nav">
-                <router-link to="/profile/like"><span class="mod_tab_item">我喜欢</span></router-link>      
-                <router-link to="/profile/create"><span class="mod_tab_item">我创建的歌单</span></router-link>
-                <router-link to="/profile/focus"><span class="mod_tab_item">关注</span></router-link>
-                <router-link to="/profile/fans"><span class="mod_tab_item">粉丝</span></router-link>
-                <router-link to="/profile/upload"><span class="mod_tab_item">我上传的歌曲</span></router-link>
+                <a class="mod_tab_item">我喜欢</a>
+                <a class="mod_tab_item">我创建的歌单</a>
+                <a class="mod_tab_item">关注</a>
+                <a class="mod_tab_item">粉丝</a>
+                <a class="mod_tab_item">我上传的歌曲</a>
             </div>
-            <!-- <div class="js_box" id="like_box">
+            <div class="js_box" id="like_box">
                 <div class="mod_tab">
                     <a href="javascript:;" class="mod_tab_item" @click="active_sub1">歌曲</a>
                     <a href="javascript:;" class="mod_tab_item" @click="active_sub2">歌单</a>
@@ -178,8 +178,7 @@
 
                     </div>
                 </div>
-            </div> -->
-            <router-view></router-view>
+            </div>
         </div>
         <div class="unlogin_profile" v-if="!hasUser">
             <div class="mod_unlogin_play">

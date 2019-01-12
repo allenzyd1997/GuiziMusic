@@ -26,11 +26,12 @@
         </div>
         <div class="main_profile" v-if="hasUser">
             <div class="mod_tab profile_nav">
-                <router-link to="/profile/like"><span class="mod_tab_item">我喜欢</span></router-link>      
-                <router-link to="/profile/create"><span class="mod_tab_item">我创建的歌单</span></router-link>
-                <router-link to="/profile/focus"><span class="mod_tab_item">关注</span></router-link>
-                <router-link to="/profile/fans"><span class="mod_tab_item">粉丝</span></router-link>
-                <router-link to="/profile/upload"><span class="mod_tab_item">我上传的歌曲</span></router-link>
+                <router-link><a class="mod_tab_item">我喜欢</a></router-link>
+                
+                <router-link><span class="mod_tab_item">我创建的歌单</span></router-link>
+                <router-link><span class="mod_tab_item">关注</span></router-link>
+                <router-link><a class="mod_tab_item">粉丝</a></router-link>
+                <a class="mod_tab_item">我上传的歌曲</a>
             </div>
             <!-- <div class="js_box" id="like_box">
                 <div class="mod_tab">

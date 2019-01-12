@@ -38,7 +38,7 @@ export const listSinger = params => {
 //歌单
 export const listSongList = params => {
     if (params.songlist_label != '') {
-        return axios.get('/api/songlist/findbysonglist_label_page?currentPage='+params.currentPage+'&pageSize='+params.pageSize+'&songlist_label='+params.songlist_label)
+        return axios.get('/api/songlist/findall_page?currentPage='+params.currentPage+'&pageSize='+params.pageSize+'&songlist_label='+params.songlist_label)
     } else {
         return axios.get('/api/songlist/findbysonglist_label_page?currentPage='+params.currentPage+'&pageSize='+params.pageSize+'&songlist_label')
     }

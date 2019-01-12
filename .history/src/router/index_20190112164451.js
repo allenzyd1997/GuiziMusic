@@ -30,45 +30,15 @@ const router = new Router({
       children: [
         {
           path: '/',
-          redirect: '/profile/like'
+          redirect: 'profile/like'
         },
         {
-          path: '/profile/like',
-          component: () => import('@/components/profile/like.vue'),
-          children: [
-            {
-              path: '/',
-              redirect: '/profile/like/song'
-            },
-            {
-              path: '/profile/like/song',
-              component: () => import('@/components/profile/like/song')
-            },
-            {
-              path: '/profile/like/songlist',
-              component: () => import('@/components/profile/like/songlist')
-            },
-            {
-              path: '/profile/like/album',
-              component: () => import('@/components/profile/like/album')
-            }
-          ]
+          path: '/like',
+          component: () => import('@/components/like.vue')
         },
         {
-          path: '/profile/create',
-          component: () => import('@/components/profile/create.vue')
-        },
-        {
-          path: '/profile/upload',
-          component: () => import('@/components/profile/upload.vue')
-        },
-        {
-          path: '/profile/fans',
-          component: () => import('@/components/profile/fans.vue')
-        },
-        {
-          path: '/profile/focus',
-          component: () => import('@/components/profile/focus.vue')
+          path: '/create',
+          component: () => import('@/components/create.vue')
         }
       ]
     },
