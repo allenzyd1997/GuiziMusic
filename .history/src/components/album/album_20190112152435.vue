@@ -59,7 +59,7 @@
 							<div class="one_album">
 								<a href="javascript:;">
 									<div class="outer_cover">
-										<img v-bind:src="item.album_pic">
+										<img v-bind:src="item.image">
 										<div class="inner_cover">
 											<img src="../../common/image/play_op.png" class="inner_img">
 										</div>
@@ -67,8 +67,8 @@
 								</a>
 								<div class="album_intro">
 									<a href="javascript:;" class="album_name_link"><p class="album_name">{{item.album_name}}</p></a>
-									<a href="javascript:;" class="artist_name_link"><p class="artist_name">{{item.singer_id}}</p></a>
-									<p class="publish_time">{{item.album_date}}</p>
+									<a href="javascript:;" class="artist_name_link"><p class="artist_name">{{item.artist_name}}</p></a>
+									<p class="publish_time">{{item.publish_time}}</p>
 								</div>
 							</div>
 						</li>
@@ -79,7 +79,7 @@
 							<div class="one_album">
 								<a href="javascript:;">
 									<div class="outer_cover">
-										<img v-bind:src="item.album_pic">
+										<img v-bind:src="item.image">
 										<div class="inner_cover">
 											<img src="../../common/image/play_op.png" class="inner_img">
 										</div>
@@ -87,8 +87,8 @@
 								</a>
 								<div class="album_intro">
 									<a href="javascript:;" class="album_name_link"><p class="album_name">{{item.album_name}}</p></a>
-									<a href="javascript:;" class="artist_name_link"><p class="artist_name">{{item.singer_id}}</p></a>
-									<p class="publish_time">{{item.album_date}}</p>
+									<a href="javascript:;" class="artist_name_link"><p class="artist_name">{{item.artist_name}}</p></a>
+									<p class="publish_time">{{item.publish_time}}</p>
 								</div>
 							</div>
 						</li>
@@ -99,7 +99,7 @@
 							<div class="one_album">
 								<a href="javascript:;">
 									<div class="outer_cover">
-										<img v-bind:src="item.album_pic">
+										<img v-bind:src="item.image">
 										<div class="inner_cover">
 											<img src="../../common/image/play_op.png" class="inner_img">
 										</div>
@@ -107,8 +107,8 @@
 								</a>
 								<div class="album_intro">
 									<a href="javascript:;" class="album_name_link"><p class="album_name">{{item.album_name}}</p></a>
-									<a href="javascript:;" class="artist_name_link"><p class="artist_name">{{item.singer_id}}</p></a>
-									<p class="publish_time">{{item.album_date}}</p>
+									<a href="javascript:;" class="artist_name_link"><p class="artist_name">{{item.artist_name}}</p></a>
+									<p class="publish_time">{{item.publish_time}}</p>
 								</div>
 							</div>
 						</li>
@@ -119,7 +119,7 @@
 							<div class="one_album">
 								<a href="javascript:;">
 									<div class="outer_cover">
-										<img v-bind:src="item.album_pic">
+										<img v-bind:src="item.image">
 										<div class="inner_cover">
 											<img src="../../common/image/play_op.png" class="inner_img">
 										</div>
@@ -128,7 +128,7 @@
 								<div class="album_intro">
 									<a href="javascript:;" class="album_name_link"><p class="album_name">{{item.album_name}}</p></a>
 									<a href="javascript:;" class="artist_name_link"><p class="artist_name">{{item.artist_name}}</p></a>
-									<p class="publish_time">{{item.album_date}}</p>
+									<p class="publish_time">{{item.publish_time}}</p>
 								</div>
 							</div>
 						</li>
@@ -159,7 +159,6 @@
 
 <script type="text/ecmascript-6">
 import {listAlbum} from '@/axios/api'
-import {formatUnixtimestamp} from '@/common/js/util'
 	export default {
 		data() {
 			return {
@@ -185,6 +184,7 @@ import {formatUnixtimestamp} from '@/common/js/util'
 				let params = {
 					currentPage: this.page,
 					pageSize: this.size,
+					query: this.filters.query
 				}
 				
 				listAlbum(params).then(res => {

@@ -59,7 +59,7 @@
 							<div class="one_album">
 								<a href="javascript:;">
 									<div class="outer_cover">
-										<img v-bind:src="item.album_pic">
+										<img v-bind:src="item.album_img">
 										<div class="inner_cover">
 											<img src="../../common/image/play_op.png" class="inner_img">
 										</div>
@@ -79,7 +79,7 @@
 							<div class="one_album">
 								<a href="javascript:;">
 									<div class="outer_cover">
-										<img v-bind:src="item.album_pic">
+										<img v-bind:src="item.image">
 										<div class="inner_cover">
 											<img src="../../common/image/play_op.png" class="inner_img">
 										</div>
@@ -99,7 +99,7 @@
 							<div class="one_album">
 								<a href="javascript:;">
 									<div class="outer_cover">
-										<img v-bind:src="item.album_pic">
+										<img v-bind:src="item.image">
 										<div class="inner_cover">
 											<img src="../../common/image/play_op.png" class="inner_img">
 										</div>
@@ -119,7 +119,7 @@
 							<div class="one_album">
 								<a href="javascript:;">
 									<div class="outer_cover">
-										<img v-bind:src="item.album_pic">
+										<img v-bind:src="item.image">
 										<div class="inner_cover">
 											<img src="../../common/image/play_op.png" class="inner_img">
 										</div>

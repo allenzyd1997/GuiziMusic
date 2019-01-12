@@ -7,14 +7,14 @@ import router from './router'
 import 'element-ui/lib/theme-chalk/index.css'
 import store from './store'
 import 'common/stylus/icon.styl'
-//import Mock from './mock/index.js'
+import Mock from './mock/index.js'
 
 
  
 import '@/assets/theme/element-#ffa5a5/index.css'
 import ElementUI from 'element-ui'
 
-//Mock.init()
+Mock.init()
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)

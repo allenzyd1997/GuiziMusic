@@ -25,22 +25,17 @@ export const requseRegister = params => {
     return axios.post('/user/register', params)
 }
 
-//专辑
 export const listAlbum = params => {
-    return axios.get('/api/albuminfo/findalbuminfoall_page?currentPage='+params.currentPage+'&pageSize='+params.pageSize)
+    return axios.post('/api/albuminfo/loadPage', params)
 }
 
-//歌手
+
 export const listSinger = params => {
-    return axios.get('/api/artistinfo/findsingerall_page?currentPage='+params.currentPage+'&pageSize='+params.pageSize)
+    return axios.get('/api/artistinfo/findsingerall_page?currentPage='+params.currentPage+'&pageSize'=params.pageSize)
 }
-
 export const listSongList = params => {
 	return axios.post('/api/listinfo/loadPage')
 
 }
 
-//首字母查询
-export const listSingerByFirstName = params => {
-    return axios.get('/api/artistinfo/firsthanzicode?firsthanzicode='+params.character)
-}
+

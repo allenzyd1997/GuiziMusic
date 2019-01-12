@@ -27,7 +27,7 @@ export const requseRegister = params => {
 
 //专辑
 export const listAlbum = params => {
-    return axios.get('/api/albuminfo/findalbuminfoall_page?currentPage='+params.currentPage+'&pageSize='+params.pageSize)
+    return axios.post('/api/albuminfo/findalbuminfoall_page', params)
 }
 
 //歌手

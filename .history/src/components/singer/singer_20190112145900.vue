@@ -16,7 +16,7 @@
             <div class="singer_tag">
                 <div class="singer_tag_list">
                     <a href="javascript:;" class="singer_tag_item">热门</a>
-                    <a href="javascript:;" class="singer_tag_item" @click="">A</a>
+                    <a href="javascript:;" class="singer_tag_item">A</a>
                     <a href="javascript:;" class="singer_tag_item">B</a>
                     <a href="javascript:;" class="singer_tag_item">C</a>   
                     <a href="javascript:;" class="singer_tag_item">D</a>
@@ -103,58 +103,54 @@
                 </div>
                 <ul class="singer_list_txt">
                     <li class="singer_list_txt_item" v-for="item in row1">
-                        <a href="">{{item.singer_name}}</a>
+                        <a href="">{{item.artist_name}}</a>
                     </li>
                 </ul>
                 <ul class="singer_list_txt">
                     <li class="singer_list_txt_item" v-for="item in row2">
-                        <a href="">{{item.singer_name}}</a>
+                        <a href="">{{item.artist_name}}</a>
                     </li>
                 </ul>
                 <ul class="singer_list_txt">
                     <li class="singer_list_txt_item" v-for="item in row3">
-                        <a href="">{{item.singer_name}}</a>
+                        <a href="">{{item.artist_name}}</a>
                     </li>
                 </ul>
                 <ul class="singer_list_txt">
                     <li class="singer_list_txt_item" v-for="item in row4">
-                        <a href="">{{item.singer_name}}</a>
+                        <a href="">{{item.artist_name}}</a>
                     </li>
                 </ul>
                 <ul class="singer_list_txt">
                     <li class="singer_list_txt_item" v-for="item in row5">
-                        <a href="">{{item.singer_name}}</a>
+                        <a href="">{{item.artist_name}}</a>
                     </li>
                 </ul>
                 <ul class="singer_list_txt">
                     <li class="singer_list_txt_item" v-for="item in row6">
-                        <a href="">{{item.singer_name}}</a>
+                        <a href="">{{item.artist_name}}</a>
                     </li>
                 </ul>
                 <ul class="singer_list_txt">
                     <li class="singer_list_txt_item" v-for="item in row7">
-                        <a href="">{{item.singer_name}}</a>
+                        <a href="">{{item.artist_name}}</a>
                     </li>
                 </ul>
                 <ul class="singer_list_txt">
                     <li class="singer_list_txt_item" v-for="item in row8">
-                        <a href="">{{item.singer_name}}</a>
+                        <a href="">{{item.artist_name}}</a>
                     </li>
                 </ul>
                 <ul class="singer_list_txt">
                     <li class="singer_list_txt_item" v-for="item in row9">
-                        <a href="">{{item.singer_name}}</a>
+                        <a href="">{{item.artist_name}}</a>
                     </li>
                 </ul>
                 <ul class="singer_list_txt">
                     <li class="singer_list_txt_item" v-for="item in row10">
-                        <a href="">{{item.singer_name}}</a>
+                        <a href="">{{item.artist_name}}</a>
                     </li>
                 </ul>                                                                                                                                                            
-            </div>
-            <div id="album_foot" class="album_foot">
-                <el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
-                </el-pagination>
             </div>
         </div>
     </div>
@@ -199,6 +195,7 @@ import {listSinger} from '@/axios/api'
 				}
 				
 				listSinger(params).then(res => {
+                    console.log(res)
 					this.pageLoading = false
 					if (!res.data)
 						return 
@@ -224,14 +221,6 @@ import {listSinger} from '@/axios/api'
 				this.page = val
 				this.getRows()
             },
-            getRowsByName() {
-                listSingerByFirstName(params).then(res => {
-                    this.pageLoading = false
-                    if (!res.data)
-                        return 
-                    this.page
-                })
-            }
             
         }
     }
