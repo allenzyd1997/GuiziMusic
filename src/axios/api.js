@@ -29,6 +29,11 @@ export const listAlbum = params => {
     return axios.post('/api/albuminfo/loadPage', params)
 }
 
+
 export const listSinger = params => {
     return axios.post('/api/artistinfo/loadPage', params)
+}
+export const listSongList = params => {
+	return axios.post('/api/listinfo/loadPage')
+
 }

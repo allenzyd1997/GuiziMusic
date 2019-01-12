@@ -6,8 +6,7 @@
       <Tab v-if="tab_show"></Tab>
     </div>
 
-
-     <router-view v-on:public_tab="public_tab" v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view>
+    <router-view v-if="isRouterAlive" v-on:public_tab="public_tab" v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view> 
 
     <MFooter  v-if="footer_show"></MFooter>
 
@@ -22,11 +21,17 @@ import Tab from '@/components/tab/tab'
 export default {
 
   name: "app",
+  provide() {
+    return {
+      reload: this.reload
+    }
+  },
   data(){
       return{
         header_show:true,
         footer_show:true,
         tab_show:true,
+        isRouterAlive: true
     }
   },
   components: {
@@ -45,6 +50,12 @@ export default {
     public_tab:function(bool){
       this.tab_show = bool
     },
+    reload() {
+      this.isRouterAlive = false,
+      this.$nextTick(function() {
+        this.isRouterAlive = true
+      })
+    }
   }, 
 }
 </script>

@@ -6,12 +6,7 @@
       <Tab v-if="tab_show"></Tab>
     </div>
 
-<<<<<<< HEAD
-    <!-- <router-view v-on:public_tab="public_tab" v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view> -->
-    <!-- <router-view v-on:public_tab="public_tab" v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view> -->
-=======
-    <router-view v-on:public_tab="public_tab" v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view> 
->>>>>>> 4074445feb7fea6378337fb9f74287c478d66f27
+    <router-view v-if="isRouterAlive" v-on:public_tab="public_tab" v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view> 
 
     <MFooter  v-if="footer_show"></MFooter>
 
@@ -22,23 +17,27 @@
 import MHeader from '@/components/m-header/m-header'
 import MFooter from '@/components/m-footer/m-footer'
 import Tab from '@/components/tab/tab'
-import Player from  '@/components/play/play'
 
 export default {
 
   name: "app",
+  provide() {
+    return {
+      reload: this.reload
+    }
+  },
   data(){
       return{
         header_show:true,
         footer_show:true,
         tab_show:true,
+        isRouterAlive: true
     }
   },
   components: {
     MHeader,
     MFooter,
     Tab,
-    Player
   },
   methods: {
     public_header: function (bool) {
@@ -51,6 +50,12 @@ export default {
     public_tab:function(bool){
       this.tab_show = bool
     },
+    reload() {
+      this.isRouterAlive = false,
+      this.$nextTick(function() {
+        this.isRouterAlive = true
+      })
+    }
   }, 
 }
 </script>
