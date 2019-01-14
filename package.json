@@ -12,6 +12,7 @@
   "dependencies": {
     "ajv": "^6.6.2",
     "axios": "^0.18.0",
+    "better-scroll": "^1.13.4",
     "element-ui": "^2.4.11",
     "lyric-parser": "^1.0.1",
     "qs": "^6.6.0",
