@@ -2,7 +2,6 @@ GuiziMusic音乐平台子系统——爬虫部分
 ---
 [<img alt="GuiziMusic" src="https://github.com/allenzyd1997/GuiziMusic/blob/master/src/common/image/logo.png" width="250">](https://github.com/allenzyd1997/GuiziMusic)
 
-**主要制作人员：Jackyliu**
 
 灵感来自
 ---
